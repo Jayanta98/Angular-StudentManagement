@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("assets/adminAssets/css/bootstrap.min.css");
+@import url("assets/adminAssets/css/icons.min");
+@import url("assets/adminAssets/css/app.min.css");
+@import url("assets/adminAssets/libs/chartist/chartist.min.css");
+@import url("assets/adminAssets/plugins/fontawesome-free/css/all.min");
+@import url("assets/adminAssets/dist/css/adminlte.min.css");
+
+
