@@ -20,10 +20,10 @@ export class EmploginComponent implements OnInit {
    model: EmployeeLogin = new EmployeeLogin;
 
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
     this.employeeService.login(this.model).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
+        alert("Success");
       }
       else{
         this.error = true;
