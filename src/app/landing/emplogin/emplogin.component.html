@@ -8,11 +8,11 @@
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
           <div class="form-group">
-            <label for="firstName">User Name</label>
+            <label for="firstName">User ID</label>
             <input type="text" class="form-control" name="firstName" [(ngModel)]="model.employeeId" #firstName="ngModel"
               [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
             <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-              <div *ngIf="firstName.errors.required">User Name is required</div>
+              <div *ngIf="firstName.errors.required">User ID is required</div>
             </div>
           </div>
 

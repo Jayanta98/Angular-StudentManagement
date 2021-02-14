@@ -23,7 +23,10 @@ export class EmploginComponent implements OnInit {
     this.employeeService.login(this.model).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
-        alert("Success");
+        localStorage.setItem('userId', String(data.employeeId));
+        localStorage.setItem('Name',data.name);
+        localStorage.setItem('Password',data.password)
+        this.router.navigate(['admin']);
       }
       else{
         this.error = true;
