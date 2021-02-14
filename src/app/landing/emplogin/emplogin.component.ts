@@ -2,6 +2,7 @@ import { EmployeeService } from './../../services/employee.service';
 import { EmployeeLogin } from './../../models/employee-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-emplogin',
@@ -20,7 +21,9 @@ export class EmploginComponent implements OnInit {
    model: EmployeeLogin = new EmployeeLogin;
 
   onSubmit() {
+   // alert(JSON.stringify(this.model));
     this.employeeService.login(this.model).subscribe(data => {
+     // alert(JSON.stringify(data));
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
         localStorage.setItem('userId', String(data.employeeId));

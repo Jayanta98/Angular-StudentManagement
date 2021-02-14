@@ -27,11 +27,13 @@ export class ReceptionComponent implements OnInit {
     this.studentService.register(this.studentModel).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
-
+        
+        this.router.navigate(['dashboard']);
       }
       else{
         this.error = true;
         this.message = data.statusMessage;
+        this.router.navigate(['dashboard']);
       }
     })
   }
