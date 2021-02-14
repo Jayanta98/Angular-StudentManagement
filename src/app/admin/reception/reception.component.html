@@ -1,62 +1,291 @@
 
 
     <!-- Start Content-->
-    <div class="justify-content-center align-content-center m-5 p-5">
-
-
-
+    <div class="justify-content-center align-content-center m-5 p-2">
       <!-- main app container -->
       <div class="jumbotron">
         <div class="container">
           <div class="row">
             <div class="col-md-8 offset-md-2">
-              <h3>Student Registration Form</h3>
+              <h2>Student Registration Form</h2>
               <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-                <div class="form-group">
-                  <label for="firstName">First Name</label>
-                  <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel"
+  
+
+    <div class="form-row">
+     <div class="form-group col-4">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" name="firstName" [(ngModel)]="studentModel.firstName" #firstName="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+      <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+        <div *ngIf="firstName.errors.required">First Name is required</div>
+      </div>
+    </div>
+
+
+  <div class="form-group col-4">
+  <div class="form-group">
+  <label for="middleName">Middle Name</label>
+  <input type="text" class="form-control" name="middleName" [(ngModel)]="studentModel.middleName" #middleName="ngModel"
+    [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }" required />
+  <div *ngIf="f.submitted && middleName.invalid" class="invalid-feedback">
+    <div *ngIf="middleName.errors.required">Middle Name is required</div>
+  </div>
+  </div>
+  </div>
+
+  <div class="form-group col-4">
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" class="form-control" name="lastName" [(ngModel)]="studentModel.lastName" #lastName="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+    <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+      <div *ngIf="lastName.errors.required">Last Name is required</div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+
+
+<div class="form-row">
+  <div class="form-group col-6">
+    <label for="fatherName">Father Name</label>
+    <input type="text" class="form-control" name="fatherName" [(ngModel)]="studentModel.fatherName" #fatherName="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && fatherName.invalid }" required />
+    <div *ngIf="f.submitted && fatherName.invalid" class="invalid-feedback">
+      <div *ngIf="fatherName.errors.required">Father Name is required</div>
+    </div>
+  </div>
+
+
+  <div class="form-group col-6">
+    <div class="form-group">
+      <label for="middleName">Mother Name</label>
+      <input type="text" class="form-control" name="middleName" [(ngModel)]="studentModel.motherName"
+        #middleName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }" required />
+      <div *ngIf="f.submitted && middleName.invalid" class="invalid-feedback">
+        <div *ngIf="middleName.errors.required">Mother Name is required</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<div class="form-row">
+  <div class="form-group col-4">
+    <label for="firstName">Mobile Number</label>
+    <input type="number" class="form-control" name="firstName" [(ngModel)]="studentModel.mobileNo" #firstName="ngModel"
+      [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+    <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+      <div *ngIf="firstName.errors.required">Mobile Number is required</div>
+    </div>
+  </div>
+
+
+  <div class="form-group col-4">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email" [(ngModel)]="studentModel.emailId" #email="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
+      <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+        <div *ngIf="email.errors.required">Email is required</div>
+        <div *ngIf="email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group col-4">
+    <div class="form-group">
+      <label for="lastName">Aadhar Number</label>
+      <input type="text" class="form-control" name="lastName" [(ngModel)]="studentModel.aadhaarNo" #lastName="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+      <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+        <div *ngIf="lastName.errors.required">Aadhar Number is required</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    <div class="form-row">
+      <div class="form-group col-4">
+        <label for="firstName">Date of Birth</label>
+        <input type="date" class="form-control" name="firstName" [(ngModel)]="studentModel.dateOfBirth" #firstName="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+          <div *ngIf="firstName.errors.required">Date of Birth is required</div>
+        </div>
+      </div>
+    
+    
+      <div class="form-group col-4">
+        <div class="form-group">
+          <label for="middleName">Address</label>
+          <input type="text" class="form-control" name="middleName" [(ngModel)]="studentModel.resAddress"
+            #middleName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }" required />
+          <div *ngIf="f.submitted && middleName.invalid" class="invalid-feedback">
+            <div *ngIf="middleName.errors.required">Address is required</div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="form-group col-4">
+        <div class="form-group">
+          <label for="classNo">Select Class Name</label>
+                            <select type="text" name="classNo" class="form-control" [(ngModel)]="studentModel.classNo" #classNo="ngModel"
+                              [ngClass]="{ 'is-invalid': f.submitted && classNo.invalid }" required>
+                              <option value="11">11th Class</option>
+                              <option value="12">12th Class</option>
+                              <option value="13">Target Class</option>
+                            </select>
+          <div *ngIf="f.submitted && classNo.invalid" class="invalid-feedback">
+            <div *ngIf="classNo.errors.required">Plesae Select The Class</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="form-row">
+
+    
+    
+      <div class="form-group col-6">
+        <div class="form-group">
+          <label for="module">Module</label>
+        <select type="text" name="module" class="form-control" [(ngModel)]="studentModel.module" #module="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && module.invalid }" required>
+          <option value="Y">YES</option>
+          <option value="N">NO</option>
+        </select>
+          <div *ngIf="f.submitted && module.invalid" class="invalid-feedback">
+            <div *ngIf="module.errors.required">Module is required</div>
+          </div>
+        </div>
+      </div>
+    
+            <div class="form-group col-6">
+              <div class="form-group">
+                <label for="idCard">ID Card</label>
+                <select type="text" name="idCard" class="form-control" [(ngModel)]="studentModel.idCard" #idCard="ngModel"
+                  [ngClass]="{ 'is-invalid': f.submitted && idCard.invalid }" required>
+                  <option value="Y">YES</option>
+                  <option value="N">NO</option>
+                </select>
+                <div *ngIf="f.submitted && idCard.invalid" class="invalid-feedback">
+                  <div *ngIf="idCard.errors.required">ID Card is required</div>
+                </div>
+              </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+
+
+        <div class="form-row">
+                  <div class="form-group col-4">
+                    <div class="form-group">
+                      <label for="module">Bag</label>
+                      <select type="text" name="bag" class="form-control" [(ngModel)]="studentModel.bag" #bag="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && bag.invalid }" required>
+                        <option value="Y">YES</option>
+                        <option value="N">NO</option>
+                      </select>
+                      <div *ngIf="f.submitted && bag.invalid" class="invalid-feedback">
+                        <div *ngIf="bag.errors.required">Bag is required</div>
+                      </div>
+                    </div>
+                  </div>
+        
+        
+          <div class="form-group col-4">
+            <div class="form-group">
+              <label for="module">Medium</label>
+              <select type="text" name="medium" class="form-control" [(ngModel)]="studentModel.medium" #medium="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && medium.invalid }" required>
+                <option value="ENGLISH">ENGLISH</option>
+                <option value="HINDI">HINDI</option>
+              </select>
+              <div *ngIf="f.submitted && medium.invalid" class="invalid-feedback">
+                <div *ngIf="medium.errors.required">Select Medium of Study</div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="form-group col-4">
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select type="text" name="category" class="form-control" [(ngModel)]="studentModel.category" #category="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && category.invalid }" required>
+                <option value="GEN">GENERAL</option>
+                <option value="OBC">OBC</option>
+                 <option value="SC">SC</option>
+                 <option value="ST">ST</option>
+              </select>
+              <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
+                <div *ngIf="category.errors.required">Select Category</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-row">
+         
+                <div class="form-group col-6">
+                  <label for="firstName">Last School</label>
+                  <input type="text" class="form-control" name="firstName" [(ngModel)]="studentModel.lastSchool" #firstName="ngModel"
                     [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
                   <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
-                    <div *ngIf="firstName.errors.required">First Name is required</div>
+                    <div *ngIf="firstName.errors.required">Last School is required</div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="lastName">Last Name</label>
-                  <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
-                  <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-                    <div *ngIf="lastName.errors.required">Last Name is required</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email />
-                  <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                    <div *ngIf="email.errors.required">Email is required</div>
-                    <div *ngIf="email.errors.email">Email must be a valid email address</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
-                  <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                    <div *ngIf="password.errors.required">Password is required</div>
-                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <button class="btn btn-primary">Register</button>
+        
+        
+          <div class="form-group col-6">
+            <div class="form-group">
+              <label for="scholarship">Scholarship %</label>
+              <input type="number" class="form-control" name="scholarship" [(ngModel)]="studentModel.scholarship"
+                #scholarship="ngModel" [ngClass]="{ 'is-invalid': f.submitted && scholarship.invalid }" required />
+              <div *ngIf="f.submitted && scholarship.invalid" class="invalid-feedback">
+                <div *ngIf="scholarship.errors.required">Enter Scholarship </div>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+
+
+
+
+               
+               
+                <div class="form-group text-center">
+                  <button class=" btn-primary btn-lg">Register</button>
                 </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-
-
-
 
     </div>
 

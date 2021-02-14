@@ -12,4 +12,9 @@ export class TopbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  menutoggle(){
+    document.getElementById('x').classList.toggle('active');
+    alert("ok");
+  }
+
 }

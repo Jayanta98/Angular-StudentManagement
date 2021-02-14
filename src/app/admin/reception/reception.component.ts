@@ -15,18 +15,19 @@ export class ReceptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  model: StudentRegister = new StudentRegister;
+  studentModel: StudentRegister = new StudentRegister();
+
   message: string;
   error: boolean;
   employeeId: number;
 
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel))
     this.employeeId = parseInt(localStorage.getItem('employeeId'));
-    this.studentService.register(this.model).subscribe(data => {
+    this.studentService.register(this.studentModel).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
-        
+
       }
       else{
         this.error = true;

@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
   selector: 'admin-root',
   template: `
         <div id="wrapper">
-            <app-topbar></app-topbar>
+            
             <app-leftsidebar></app-leftsidebar>
+            <app-topbar></app-topbar>
 
             <div class="content-page">
                 <div class="content">
