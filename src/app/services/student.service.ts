@@ -15,8 +15,8 @@ export class StudentService {
     return this.http.post<any>('http://localhost:9090/register',student);
   }
 
-  fetchStudents(employeeId: any):Observable<StudentList>{
-    let url="http://localhost:9090/student-list?employeeId="+employeeId;
+  fetchStudents():Observable<StudentList>{
+    let url="http://localhost:9090/student-list";
     return this.http.get<StudentList>(url);
   }
 

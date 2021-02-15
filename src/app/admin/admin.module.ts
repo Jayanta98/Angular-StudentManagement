@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { AdminlayoutModule } from './adminlayout/adminlayout.module';
 
 import { NgModule } from '@angular/core';
@@ -10,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ExamcellComponent } from './examcell/examcell.component';
 import { AccountComponent } from './account/account.component';
 import { FormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
 
 
 
@@ -21,12 +23,15 @@ import { FormsModule } from '@angular/forms';
     ExamcellComponent,
     AccountComponent,
 
+
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     AdminlayoutModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    AgGridModule.withComponents(null),
   ]
 })
 export class AdminModule { }
