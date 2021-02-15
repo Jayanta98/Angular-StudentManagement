@@ -19,6 +19,12 @@ export class StudentRegister{
     public lastSchool: string;
     public category: string;
 }
+
+export class StudentsCount{
+    public stdentsCount:number;
+    public statusCode:string;
+    public statusMessage:string;
+}
 export class StudentSaved{
     //when fetching student
     public registrationNo: number;
