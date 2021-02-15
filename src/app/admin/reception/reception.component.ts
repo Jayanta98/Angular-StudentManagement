@@ -22,11 +22,12 @@ export class ReceptionComponent implements OnInit {
   employeeId: number;
 
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel))
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
     this.employeeId = parseInt(localStorage.getItem('employeeId'));
     this.studentService.register(this.studentModel).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
+        alert("Success");
 
       }
       else{
