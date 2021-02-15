@@ -76,71 +76,6 @@
   <!-- /.row -->
   <!-- end row -->
 
-  <div class="row">
-    <div class="col-xl-3 col-md-6">
-      <div class="card-box widget-user">
-        <div class="media">
-          <div class="avatar-lg mr-3">
-            <img src="../../../../assets/adminAssets/images/users/user-3.jpg" class="img-fluid rounded-circle"
-              alt="user">
-          </div>
-          <div class="media-body overflow-hidden">
-            <h5 class="mt-0 mb-1">Chadengle</h5>
-            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-            <small class="text-warning"><b>Admin</b></small>
-          </div>
-        </div>
-      </div>
-    </div><!-- end col -->
-
-    <div class="col-xl-3 col-md-6">
-      <div class="card-box widget-user">
-        <div class="media">
-          <div class="avatar-lg mr-3">
-            <img src="../../../../assets/adminAssets/images/users/user-2.jpg" class="img-fluid rounded-circle"
-              alt="user">
-          </div>
-          <div class="media-body overflow-hidden">
-            <h5 class="mt-0 mb-1"> Michael Zenaty</h5>
-            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-            <small class="text-pink"><b>Support Lead</b></small>
-          </div>
-        </div>
-      </div>
-    </div><!-- end col -->
-
-    <div class="col-xl-3 col-md-6">
-      <div class="card-box widget-user">
-        <div class="media">
-          <div class="avatar-lg mr-3">
-            <img src="../../../../assets/adminAssets/images/users/user-1.jpg" class="img-fluid rounded-circle"
-              alt="user">
-          </div>
-          <div class="media-body overflow-hidden">
-            <h5 class="mt-0 mb-1">Stillnotdavid</h5>
-            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-            <small class="text-success"><b>Designer</b></small>
-          </div>
-        </div>
-      </div>
-    </div><!-- end col -->
-
-    <div class="col-xl-3 col-md-6">
-      <div class="card-box widget-user">
-        <div class="media">
-          <div class="avatar-lg mr-3">
-            <img src="../../../../assets/adminAssets/images/users/user-10.jpg" class="img-fluid rounded-circle"
-              alt="user">
-          </div>
-          <div class="media-body overflow-hidden">
-            <h5 class="mt-0 mb-1">Tomaslau</h5>
-            <p class="text-muted mb-2 font-13 text-truncate">coderthemes@gmail.com</p>
-            <small class="text-info"><b>Developer</b></small>
-          </div>
-        </div>
-      </div>
-    </div><!-- end col -->
-
   </div>
   <!-- end row -->
 
@@ -148,9 +83,10 @@
   <div class="col-xl-12 justify-content-center align-content-center">
     <h2 class="text-center">List of All Students </h2>
     <div class="card-box">
-<div class="container m-4 p-2">
-  <ag-grid-angular style="margin:10px;height:200px !important" class="ag-theme-balham" [columnDefs]="sListHeader"
-    [rowData]="sList" [pagination]="true" [paginationPageSize]="2">
+<div class="container m-3 p-2">
+  <ag-grid-angular style="margin:10px;height:200px !important" class="ag-theme-alpine" [columnDefs]="sListHeader"
+    [rowData]="sList" [pagination]="true" [paginationPageSize]="2"
+    >
   </ag-grid-angular>
 
 </div>
