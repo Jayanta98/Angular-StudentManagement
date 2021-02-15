@@ -21,7 +21,7 @@ export class StudentRegister{
 }
 
 export class StudentsCount{
-    public stdentsCount:number;
+    public studentsCount:number;
     public statusCode:string;
     public statusMessage:string;
 }
