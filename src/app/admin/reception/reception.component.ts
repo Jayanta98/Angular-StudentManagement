@@ -33,7 +33,7 @@ export class ReceptionComponent implements OnInit {
       else{
         this.error = true;
         this.message = data.statusMessage;
-
+         alert(data.statusCode+" ; "+this.message);
       }
     })
   }
