@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AdminlayoutModule } from './adminlayout/adminlayout.module';
 
 import { NgModule } from '@angular/core';
@@ -31,6 +31,7 @@ import { AgGridModule } from 'ag-grid-angular';
     AdminlayoutModule,
     FormsModule,
     RouterModule,
+
     AgGridModule.withComponents(null),
   ]
 })

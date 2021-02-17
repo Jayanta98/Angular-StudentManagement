@@ -15,8 +15,14 @@ export class EmployeeService {
     return this.http.post<any>('http://localhost:9090/employee-login',login);
   }
 
-  fetch(employeeId: any): Observable<EmployeeStatus>{
+  fetch(employeeId: number): Observable<EmployeeStatus>{
     let url="http://localhost:9090/fetch-employee?employeeId="+employeeId;
     return this.http.get<EmployeeStatus>(url);
+  }
+
+
+
+  logged(){
+    return !! localStorage.getItem('employeeID');
   }
 }

@@ -1,4 +1,4 @@
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopbarComponent } from './topbar/topbar.component';
@@ -12,11 +12,12 @@ import { RightbarComponent } from './rightbar/rightbar.component';
   declarations: [TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule
+
 
   ],
   exports: [
-    TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent
+    TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent,RouterModule
   ]
 })
 export class AdminlayoutModule { }

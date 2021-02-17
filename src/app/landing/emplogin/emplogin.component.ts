@@ -27,9 +27,10 @@ export class EmploginComponent implements OnInit {
      // alert(JSON.stringify(data));
       if(data.statusCode === "SUCCESS"){
         //storing the data and navigate
-        localStorage.setItem('userId',String(data.employeeId));
+       localStorage.employeeID=data.employeeId;
         localStorage.setItem('Name',data.name);
-        localStorage.setItem('Password',data.password)
+        //localStorage.setItem('Password',data.password)
+
         this.router.navigate(['admin']);
       }
       else{

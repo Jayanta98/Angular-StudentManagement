@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topbar',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -15,6 +17,12 @@ export class TopbarComponent implements OnInit {
   menutoggle(){
     document.getElementById('x').classList.toggle('active');
     alert("ok");
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/home']);
+
   }
 
 }
