@@ -21,6 +21,7 @@
     "@angular/router": "~10.0.14",
     "ag-grid-angular": "^25.0.1",
     "ag-grid-community": "^25.0.1",
+    "csvtojson": "^2.0.10",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

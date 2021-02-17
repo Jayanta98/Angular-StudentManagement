@@ -3,13 +3,175 @@
   <h1>Examcell works!</h1>
 </div>-->
 
-<div class="content-page">
-  <div class="content">
+
 
     <!-- Start Content-->
     <div class="container-fluid">
-      <h1>Exam Cell Section works!</h1>
-    </div>
-  </div>
-</div>
+      <h1 class="text-center text-danger"> Exam Cell</h1>
 
+      <div class="form-row">
+
+        <div class="form-group col-4">
+
+          <!-- main app container -->
+          <div class="container">
+            <div class="card">
+              <h2 class="card-header text-center text-success">Class 11th </h2>
+              <div class="card-body">
+                <form name="form" (ngSubmit)="f.form.valid && onClassEleventhSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                    <label>Upload CSV marks</label>
+                    <input type="file" name="pancard" class="form-control" (change)="on11thMarksCardSelection($event)" required>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-primary mr-1">Upload</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group col-4">
+
+          <!-- main app container -->
+          <div class="container">
+            <div class="card">
+              <h2 class="card-header text-center text-success">Class 12th </h2>
+              <div class="card-body">
+                <form name="form" (ngSubmit)="f.form.valid && onClassTwelveSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                    <label>Upload CSV marks</label>
+                    <input type="file" name="pancard" class="form-control" (change)="on12thMarksCardSelection($event)" required>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-primary mr-1">Upload</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group col-4">
+
+          <!-- main app container -->
+          <div class="container">
+            <div class="card">
+              <h2 class="card-header text-center text-success">Target Batch </h2>
+              <div class="card-body">
+                <form name="form" (ngSubmit)="f.form.valid && onClassTargetSubmit()" #f="ngForm" novalidate>
+                  <div class="form-group">
+                    <label>Upload CSV marks</label>
+                    <input type="file" name="pancard" class="form-control" (change)="onTargetBatchMarksCardSelection($event)" required>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="btn btn-primary mr-1">Upload</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div class="jumbotron p-4">
+      <div class="container">
+        <h1 class="display-4 text-danger"> View Marks of Students</h1>
+        <p class="lead">You can view the marks of students by entering Registration Number or Selecting the Class Name
+          takes</p>
+      </div>
+    </div>
+
+
+
+    <div class="container justify-content-center align-content-center d-flex " style="margin-bottom: 50px;">
+      <div class="form-row ">
+        <div class="form-group col-6 ">
+          <!-- main app container -->
+          <div class="container">
+            <div class="card">
+              <h4 class="card-header text-center text-success"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>View
+                Marks By Registration Number</h4>
+              <div class="card-body ">
+                <form (ngSubmit)="trackMarksByRegiNumber()">
+                  <div class="form-group">
+                    <label>Enter Registration No</label>
+                    <input type="text" class="form-control" name="studentRegNo" [(ngModel)]="studentRegNo" required>
+                  </div>
+                  <div class="text-center" >
+                    <div>
+                      <button class="btn btn-primary mr-1">Show</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="form-group col-6 ">
+            <!-- main app container -->
+            <div class="container">
+              <div class="card">
+                <h4 class="card-header text-center text-success"> <i class="fa fa-graduation-cap" aria-hidden="true"></i>View
+                  Marks of Students By Class Name</h4>
+                <div class="card-body">
+                  <form (ngSubmit)="trackMarksByBatchName()">
+
+                    <div class="form-group">
+                      <label for="category"> Select Class</label>
+                      <select type="text" name="category" class="form-control" [(ngModel)]="BatchName" #category="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && category.invalid }" required>
+                        <option value="11">Class-11</option>
+                        <option value="12">Class-12</option>
+                        <option value="13">Target Batch</option>
+
+                      </select>
+                      <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
+                        <div *ngIf="category.errors.required">Select Class</div>
+                      </div>
+                    </div>
+
+
+                    <div class="text-center">
+                      <button class="btn btn-primary mr-1">Show</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          </div>
+    </div>
