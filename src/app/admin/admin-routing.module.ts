@@ -9,16 +9,17 @@ import { AuthgardGuard } from '../authgard.guard';
 
 const routes: Routes = [
 
-  { path: "admin", redirectTo: "admin/dashboard", pathMatch: "full" , canActivate:[AuthgardGuard] },
+  //canActivate:[AuthgardGuard]
+  { path: "admin", redirectTo: "admin/dashboard", pathMatch: "full"   },
 
   {
     path: "admin",
     component: AdminComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent , canActivate:[AuthgardGuard] },
-      { path: "reception", component: ReceptionComponent , canActivate:[AuthgardGuard] },
-      { path: "examcell", component: ExamcellComponent  , canActivate:[AuthgardGuard]},
-      { path: "account", component: AccountComponent  , canActivate:[AuthgardGuard]}
+      { path: "dashboard", component: DashboardComponent },//canActivate:[AuthgardGuard] 
+      { path: "reception", component: ReceptionComponent },
+      { path: "examcell", component: ExamcellComponent   },
+      { path: "account", component: AccountComponent  }
 
     ]
 
