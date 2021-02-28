@@ -12,12 +12,13 @@ import { RightbarComponent } from './rightbar/rightbar.component';
   declarations: [TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+
 
 
   ],
   exports: [
-    TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent,RouterModule
+    TopbarComponent, LeftsidebarComponent, FooterComponent, RightbarComponent
   ]
 })
 export class AdminlayoutModule { }

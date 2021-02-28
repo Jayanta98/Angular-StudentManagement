@@ -1,3 +1,4 @@
+import { RouterModule ,Router} from '@angular/router';
 import { AuthgardGuard } from './authgard.guard';
 import { LandingModule } from './landing/landing.module';
 import { AdminModule } from './admin/admin.module';
@@ -20,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     AdminModule,
     FormsModule,
     HttpClientModule,
-    LandingModule
+    LandingModule,
+    RouterModule,
+
   ],
   providers: [AuthgardGuard],
   bootstrap: [AppComponent]

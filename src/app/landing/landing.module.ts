@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     LandingRoutingModule,
     LandinglayoutModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+
   ]
 })
 export class LandingModule { }
