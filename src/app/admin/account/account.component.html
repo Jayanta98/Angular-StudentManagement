@@ -576,3 +576,37 @@
   </div>
 
 </div>
+
+
+<div class="jumbotron p-4 m-4">
+  <div class="container">
+    <h1 class="display-4 text-danger"> Scholarship Calculator</h1>
+    <p class="lead">This is an online tool to determine the Scholarship of a student
+    </p>
+  </div>
+</div>
+
+
+<div class=" container text-center w-50 h-200px">
+  <form method="post">
+    <div class="imgcontainer">
+      <img src="../../../assets/adminAssets/images/calculator.jpg" class="avatar">
+    </div>
+
+    <div class="container " style="margin-bottom: 50px;">
+      <label for="uname"><b>Scholarship Calculator</b></label><br />
+      <label for="uname" style="color:blue"><b>Student is getting {{offfer | currency:"INR"}} Scholarship</b></label>
+      <label for="uname" style="color:blue"><b>Student has to Pay {{finalFessPay | currency:"INR"}} Fees
+          Ammount</b></label><br>
+
+      <input type="text" class="feesInput" placeholder="Enter Actual Course Fees " name="actualCourseFees"
+        [(ngModel)]="actualCourseFees" required>
+
+      <input type="number" class="feesInput" placeholder="Enter % of Scholarship " name="percentageScholarship"
+        [(ngModel)]="percentageScholarship" required>
+
+      <button (click)="scholarshipFeesCal()" class="mybutton bg-primary">Calculate</button>
+
+    </div>
+  </form>
+</div>
