@@ -1,4 +1,7 @@
+import { ExamcellService } from './../../services/examcell.service';
+import { ResultsDto } from './../../models/examcell';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-examcell',
@@ -7,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamcellComponent implements OnInit {
 
-  constructor() { }
+  resultDto: ResultsDto = new ResultsDto()
+  constructor(private router: Router, private examCellService: ExamcellService) { }
 
   ngOnInit(): void {
   }
@@ -18,8 +22,20 @@ export class ExamcellComponent implements OnInit {
   }
   onClassEleventhSubmit(){
       let formData: FormData = new FormData();
-       formData.append('marksCard11', this.on11thmarksCard);
+       formData.append('file', this.on11thmarksCard);
+       this.resultDto.files = this.on11thmarksCard;
        alert(JSON.stringify(formData));
+       alert(JSON.stringify(this.resultDto));
+       this.examCellService.upload(formData).subscribe(data => {
+         if(data.statusCode === "SUCCESS"){
+           alert(data.statusCode)
+         }
+         else{
+           alert(data.statusMessage)
+         }
+       })
+
+
   }
 
 
