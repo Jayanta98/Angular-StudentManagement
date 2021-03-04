@@ -1,5 +1,5 @@
 import { ExamcellService } from './../../services/examcell.service';
-import { ResultsDto } from './../../models/examcell';
+import { Result, ResultsDto } from './../../models/examcell';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,61 +16,65 @@ export class ExamcellComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   on11thmarksCard: any;
-    on11thMarksCardSelection(event) {
+  on11thmarksCard: any;
+  onMarksSelection(event) {
     this.on11thmarksCard = event.target.files[0];
   }
-  onClassEleventhSubmit(){
-      let formData: FormData = new FormData();
-       formData.append('file', this.on11thmarksCard);
-       this.resultDto.files = this.on11thmarksCard;
-       alert(JSON.stringify(formData));
-       alert(JSON.stringify(this.resultDto));
-       this.examCellService.upload(formData).subscribe(data => {
-         if(data.statusCode === "SUCCESS"){
-           alert(data.statusCode)
-         }
-         else{
-           alert(data.statusMessage)
-         }
-       })
+  onMarksSubmit() {
+    let formData: FormData = new FormData();
+    formData.append('file', this.on11thmarksCard);
+    alert(JSON.stringify(formData));
+    this.examCellService.upload(formData).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert(data.statusCode)
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
 
 
   }
 
+  rollNo: number
+  resultList: Result[]
+  onRollNoSubmit() {
+    alert(JSON.stringify(this.rollNo));
+    this.examCellService.fetchByRollNo(this.rollNo).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        this.resultList = data.resultsList
+        alert(JSON.stringify(this.resultList));
 
-
-   on12thmarksCard: any;
-    on12thMarksCardSelection(event) {
-    this.on12thmarksCard = event.target.files[0];
-  }
-  onClassTwelveSubmit(){
-      let formData: FormData = new FormData();
-       formData.append('marksCard12', this.on12thmarksCard);
-       alert(JSON.stringify(formData));
-  }
-
-
-   TargetBatchmarksCard: any;
-    onTargetBatchMarksCardSelection(event) {
-    this.TargetBatchmarksCard = event.target.files[0];
-  }
-  onClassTargetSubmit(){
-      let formData: FormData = new FormData();
-       formData.append('marksCard', this.TargetBatchmarksCard);
-       alert(JSON.stringify(formData));
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
   }
 
+  testCode: string
+  onTestCodeSubmit() {
+    alert(JSON.stringify(this.testCode));
+    this.examCellService.fetchByTestCode(this.testCode).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        this.resultList = data.resultsList
+        alert(JSON.stringify(this.resultList));
 
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
+  }
 
-  studentRegNo:number;
-  trackMarksByRegiNumber(){
+  studentRegNo: number;
+  trackMarksByRegiNumber() {
     alert(this.studentRegNo);
 
   }
 
-  BatchName:any;
-  trackMarksByBatchName(){
+  BatchName: any;
+  trackMarksByBatchName() {
     alert(this.BatchName)
 
   }

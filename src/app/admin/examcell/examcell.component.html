@@ -11,10 +11,10 @@
 <div class="card m-4">
   <h2 class="card-header text-center text-success">Upload The Marks </h2>
   <div class="card-body">
-    <form name="form" (ngSubmit)="f.form.valid && onClassEleventhSubmit()" #f="ngForm" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && onMarksSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
         <label>Upload Excell file</label>
-        <input type="file" name="pancard" class="form-control" (change)="on11thMarksCardSelection($event)" required>
+        <input type="file" name="pancard" class="form-control" (change)="onMarksSelection($event)" required>
       </div>
 
       <div class="text-center">
