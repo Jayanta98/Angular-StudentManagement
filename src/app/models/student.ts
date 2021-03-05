@@ -62,7 +62,7 @@ export class StudentsCount extends Status{
   public studentsCount: number;
 }
 
-export class StudentList extends Status {
+export class StudentListDto extends Status {
   //when student data to be fetched
   public studentList: StudentRegister[];
 }
