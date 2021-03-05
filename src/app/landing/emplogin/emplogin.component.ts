@@ -1,5 +1,5 @@
 import { EmployeeService } from './../../services/employee.service';
-import { EmployeeLogin } from './../../models/employee-login';
+import { EmployeeLogin } from './../../models/employee';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';

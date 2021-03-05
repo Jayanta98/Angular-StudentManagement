@@ -1,9 +1,7 @@
-import { EmployeeStatus } from './../models/employee-status';
-import { EmployeeLoginStatus } from './../models/employee-login-status';
+import { EmployeeLoginStatus , EmployeeLogin , EmployeeStatus} from './../models/employee';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { EmployeeLogin } from '../models/employee-login';
 
 @Injectable({
   providedIn: 'root'
