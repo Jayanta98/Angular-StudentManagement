@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { RouterModule ,Router} from '@angular/router';
 import { AuthgardGuard } from './authgard.guard';
 import { LandingModule } from './landing/landing.module';
@@ -9,11 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -23,9 +27,12 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     LandingModule,
     RouterModule,
+    BrowserAnimationsModule,
+    MaterialModule
 
   ],
   providers: [AuthgardGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[MatConfirmDialogComponent]
 })
 export class AppModule { }

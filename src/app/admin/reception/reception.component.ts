@@ -1,3 +1,4 @@
+import { DialogService } from './../../services/dialog.service';
 import { StudentService } from './../../services/student.service';
 import { StudentRegister } from './../../models/student';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 })
 export class ReceptionComponent implements OnInit {
 
-  constructor(private studentService: StudentService, private router: Router) { }
+  constructor(private studentService: StudentService, 
+    private router: Router,
+    private dialogService: DialogService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +26,12 @@ export class ReceptionComponent implements OnInit {
 
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
+    this.dialogService.openConfirmDialog('Are you sure to add the record ?')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        alert("Saved")
+      }
+    });
     /* this.employeeId = parseInt(localStorage.getItem('employeeId'));
      this.studentService.register(this.studentModel).subscribe(data => {
        if(data.statusCode === "SUCCESS"){
