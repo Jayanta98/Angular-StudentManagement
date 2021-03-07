@@ -1,7 +1,7 @@
 import { Status } from './status';
 export class StudentRegister {
   //when student data to be register
-  public referenceno: number
+  public referenceNo: number
   public name: string;
   public fatherName: string;
   public motherName: string;
@@ -58,7 +58,7 @@ export class StudentRegister {
   public demoCard: string;
 }
 
-export class StudentsCount extends Status{
+export class StudentsCount extends Status {
   public studentsCount: number;
 }
 
@@ -67,6 +67,6 @@ export class StudentListDto extends Status {
   public studentList: StudentRegister[];
 }
 
-export class StudentDto extends Status{
+export class StudentDto extends Status {
   public student: StudentRegister
 }

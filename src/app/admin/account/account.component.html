@@ -4,7 +4,7 @@
 
   <div class="jumbotron p-4 m-4">
     <div class="container">
-      <h1 class="display-4 text-danger">Account Section</h1>
+      <h1 class="display-4 text-danger">Admission & Account Section</h1>
 
     </div>
   </div>
@@ -15,7 +15,7 @@
   <h4>Enter The Reference Number</h4>
   <input type="text" [(ngModel)]="ref" name="ref">
 
-  <button class=" btn-primary " (click)="refSubmit()">Go</button>
+  <button class=" btn-primary " (click)="refSubmit()">Go For Enrollment</button>
 
 </div>
 
@@ -26,12 +26,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <h2>Student Admission Form</h2>
+          <h2>Student Enrollment Form</h2>
           <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
 
+
             <div class="form-row">
-              <div class="form-group col-4">
+
+
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="referenceNo">Student Reference No.</label>
+                  <input type="text" disabled class="form-control" name="referenceNo"
+                    [(ngModel)]="studentModel.referenceNo" #referenceNo="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && referenceNo.invalid }" required />
+                  <div *ngIf="f.submitted && referenceNo.invalid" class="invalid-feedback">
+                    <div *ngIf="referenceNo.errors.required">Reference No is required</div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="form-group col-6">
                 <label for="firstName">Student Full Name</label>
                 <input type="text" class="form-control" name="name" [(ngModel)]="studentModel.name" #name="ngModel"
                   [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" required />
@@ -40,7 +57,15 @@
                 </div>
               </div>
 
-              <div class="form-group col-4">
+            </div>
+
+
+
+
+            <div class="form-row">
+
+
+              <div class="form-group col-6">
                 <div class="form-group">
                   <label for="fatherName">Father Name</label>
                   <input type="text" class="form-control" name="fatherName" [(ngModel)]="studentModel.fatherName"
@@ -51,7 +76,7 @@
                 </div>
               </div>
 
-              <div class="form-group col-4">
+              <div class="form-group col-6">
                 <div class="form-group">
                   <label for="motherName">Mother Name</label>
                   <input type="text" class="form-control" name="motherName" [(ngModel)]="studentModel.motherName"
@@ -135,11 +160,8 @@
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="pwd">pwd</label>
-                  <input type="text" class="form-control" name="pwd" [(ngModel)]="studentModel.pwd" #pwd="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && pwd.invalid }" required />
-                  <div *ngIf="f.submitted && pwd.invalid" class="invalid-feedback">
-                    <div *ngIf="pwd.errors.required">pwd is required</div>
-                  </div>
+                  <input type="text" class="form-control" name="pwd" [(ngModel)]="studentModel.pwd" />
+
                 </div>
               </div>
             </div>
@@ -170,11 +192,8 @@
                 <div class="form-group">
                   <label for="parentsOccupation">Parents Occupation </label>
                   <input type="text" class="form-control" name="parentsOccupation"
-                    [(ngModel)]="studentModel.parentsOccupation" #parentsOccupation="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && parentsOccupation.invalid }" required />
-                  <div *ngIf="f.submitted && parentsOccupation.invalid" class="invalid-feedback">
-                    <div *ngIf="parentsOccupation.errors.required"> Parents Occupation is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.parentsOccupation" />
+
                 </div>
               </div>
 
@@ -199,11 +218,8 @@
                 <div class="form-group">
                   <label for="mobileNoFather">Father Mobile No.</label>
                   <input type="text" class="form-control" name="mobileNoFather"
-                    [(ngModel)]="studentModel.mobileNoFather" #mobileNoFather="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoFather.invalid }" required />
-                  <div *ngIf="f.submitted && mobileNoFather.invalid" class="invalid-feedback">
-                    <div *ngIf="mobileNoFather.errors.required">Father Mobile No. is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.mobileNoFather" />
+
                 </div>
               </div>
 
@@ -211,11 +227,8 @@
                 <div class="form-group">
                   <label for="mobileNoMother">Mother mobile No.</label>
                   <input type="text" class="form-control" name="mobileNoMother"
-                    [(ngModel)]="studentModel.mobileNoMother" #mobileNoMother="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoMother.invalid }" required />
-                  <div *ngIf="f.submitted && mobileNoMother.invalid" class="invalid-feedback">
-                    <div *ngIf="mobileNoMother.errors.required">Mother Mobile No. is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.mobileNoMother" />
+
                 </div>
               </div>
             </div>
@@ -252,12 +265,8 @@
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="localAddress">Enter localAddress</label>
-                  <input type="text" class="form-control" name="localAddress" [(ngModel)]="studentModel.localAddress"
-                    #localAddress="ngModel" [ngClass]="{ 'is-invalid': f.submitted && localAddress.invalid }"
-                    required />
-                  <div *ngIf="f.submitted && localAddress.invalid" class="invalid-feedback">
-                    <div *ngIf="localAddress.errors.required">LocalAddress is required</div>
-                  </div>
+                  <input type="text" class="form-control" name="localAddress" [(ngModel)]="studentModel.localAddress" />
+
                 </div>
               </div>
             </div>
@@ -271,11 +280,8 @@
                 <div class="form-group">
                   <label for="localAddressGuardian">Local Guardian Address</label>
                   <input type="text" class="form-control" name="localAddressGuardian"
-                    [(ngModel)]="studentModel.localAddressGuardian" #localAddressGuardian="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && localAddressGuardian.invalid }" required />
-                  <div *ngIf="f.submitted && localAddressGuardian.invalid" class="invalid-feedback">
-                    <div *ngIf="localAddressGuardian.errors.required">Local Guardian Address is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.localAddressGuardian" />
+
                 </div>
               </div>
 
@@ -283,11 +289,8 @@
                 <div class="form-group">
                   <label for="mobileNoLocalGuardian">MobileNo of LocalGuardian </label>
                   <input type="text" class="form-control" name="mobileNoLocalGuardian"
-                    [(ngModel)]="studentModel.mobileNoLocalGuardian" #mobileNoLocalGuardian="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoLocalGuardian.invalid }" required />
-                  <div *ngIf="f.submitted && mobileNoLocalGuardian.invalid" class="invalid-feedback">
-                    <div *ngIf="mobileNoLocalGuardian.errors.required"> MobileNo of LocalGuardian is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.mobileNoLocalGuardian" />
+
                 </div>
               </div>
 
@@ -301,11 +304,8 @@
               <div class="form-group col-4">
                 <label for="passingOutYear10">Passing Out Year of 10th</label>
                 <input type="number" class="form-control" name="passingOutYear10"
-                  [(ngModel)]="studentModel.passingOutYear10" #passingOutYear10="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && passingOutYear10.invalid }" required />
-                <div *ngIf="f.submitted && passingOutYear10.invalid" class="invalid-feedback">
-                  <div *ngIf="passingOutYear10.errors.required">passingOutYear10 is required</div>
-                </div>
+                  [(ngModel)]="studentModel.passingOutYear10" />
+
               </div>
 
 
@@ -313,11 +313,8 @@
                 <div class="form-group">
                   <label for="passingOutYear11">Passing Out Year of 11th</label>
                   <input type="number" class="form-control" name="passingOutYear11"
-                    [(ngModel)]="studentModel.passingOutYear11" #passingOutYear11="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && passingOutYear11.invalid }" required />
-                  <div *ngIf="f.submitted && passingOutYear11.invalid" class="invalid-feedback">
-                    <div *ngIf="passingOutYear11.errors.required">passingOutYear11 is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.passingOutYear11" />
+
                 </div>
               </div>
 
@@ -325,11 +322,8 @@
                 <div class="form-group">
                   <label for="passingOutYear12">PassingOutYear of 12th</label>
                   <input type="number" class="form-control" name="passingOutYear12"
-                    [(ngModel)]="studentModel.passingOutYear12" #passingOutYear12="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && passingOutYear12.invalid }" required />
-                  <div *ngIf="f.submitted && passingOutYear12.invalid" class="invalid-feedback">
-                    <div *ngIf="passingOutYear12.errors.required">PassingOutYear12 is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.passingOutYear12" />
+
                 </div>
               </div>
             </div>
@@ -341,33 +335,24 @@
             <div class="form-row">
               <div class="form-group col-4">
                 <label for="school10">School Name of 10th</label>
-                <input type="text" class="form-control" name="school10" [(ngModel)]="studentModel.school10"
-                  #school10="ngModel" [ngClass]="{ 'is-invalid': f.submitted && school10.invalid }" required />
-                <div *ngIf="f.submitted && school10.invalid" class="invalid-feedback">
-                  <div *ngIf="school10.errors.required">school10 is required</div>
-                </div>
+                <input type="text" class="form-control" name="school10" [(ngModel)]="studentModel.school10" />
+
               </div>
 
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="school11">School Name of 11th</label>
-                  <input type="text" class="form-control" name="school11" [(ngModel)]="studentModel.school11"
-                    #school11="ngModel" [ngClass]="{ 'is-invalid': f.submitted && school11.invalid }" required />
-                  <div *ngIf="f.submitted && school11.invalid" class="invalid-feedback">
-                    <div *ngIf="school11.errors.required">school11 is required</div>
-                  </div>
+                  <input type="text" class="form-control" name="school11" [(ngModel)]="studentModel.school11" />
+
                 </div>
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="school12">School Name of 12th</label>
-                  <input type="text" class="form-control" name="school12" [(ngModel)]="studentModel.school12"
-                    #school12="ngModel" [ngClass]="{ 'is-invalid': f.submitted && school12.invalid }" required />
-                  <div *ngIf="f.submitted && school12.invalid" class="invalid-feedback">
-                    <div *ngIf="school12.errors.required">school12 is required</div>
-                  </div>
+                  <input type="text" class="form-control" name="school12" [(ngModel)]="studentModel.school12" />
+
                 </div>
               </div>
             </div>
@@ -380,22 +365,16 @@
               <div class="form-group col-4">
                 <label for="schoolAddress10">SchoolAddress of 10th</label>
                 <input type="text" class="form-control" name="schoolAddress10"
-                  [(ngModel)]="studentModel.schoolAddress10" #schoolAddress10="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && schoolAddress10.invalid }" required />
-                <div *ngIf="f.submitted && schoolAddress10.invalid" class="invalid-feedback">
-                  <div *ngIf="schoolAddress10.errors.required">schoolAddress10 is required</div>
-                </div>
+                  [(ngModel)]="studentModel.schoolAddress10" />
+
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="schoolAddress11">SchoolAddress of 11th</label>
                   <input type="text" class="form-control" name="schoolAddress11"
-                    [(ngModel)]="studentModel.schoolAddress11" #schoolAddress11="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && schoolAddress11.invalid }" required />
-                  <div *ngIf="f.submitted && schoolAddress11.invalid" class="invalid-feedback">
-                    <div *ngIf="schoolAddress11.errors.required">schoolAddress11 is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.schoolAddress11" />
+
                 </div>
               </div>
 
@@ -403,11 +382,8 @@
                 <div class="form-group">
                   <label for="schoolAddress12">SchoolAddress of 12th</label>
                   <input type="text" class="form-control" name="schoolAddress12"
-                    [(ngModel)]="studentModel.schoolAddress12" #schoolAddress12="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && schoolAddress12.invalid }" required />
-                  <div *ngIf="f.submitted && schoolAddress12.invalid" class="invalid-feedback">
-                    <div *ngIf="schoolAddress12.errors.required">schoolAddress12 is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.schoolAddress12" />
+
                 </div>
               </div>
             </div>
@@ -419,32 +395,23 @@
             <div class="form-row">
               <div class="form-group col-4">
                 <label for="gradePer10">Grade in 10th</label>
-                <input type="number" class="form-control" name="gradePer10" [(ngModel)]="studentModel.gradePer10"
-                  #gradePer10="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gradePer10.invalid }" required />
-                <div *ngIf="f.submitted && gradePer10.invalid" class="invalid-feedback">
-                  <div *ngIf="gradePer10.errors.required">gradePer10 is required</div>
-                </div>
+                <input type="number" class="form-control" name="gradePer10" [(ngModel)]="studentModel.gradePer10" />
+
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="gradePer11">Grade in 11th</label>
-                  <input type="number" class="form-control" name="gradePer11" [(ngModel)]="studentModel.gradePer11"
-                    #gradePer11="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gradePer11.invalid }" required />
-                  <div *ngIf="f.submitted && gradePer11.invalid" class="invalid-feedback">
-                    <div *ngIf="gradePer11.errors.required">GradePer11 is required</div>
-                  </div>
+                  <input type="number" class="form-control" name="gradePer11" [(ngModel)]="studentModel.gradePer11" />
+
                 </div>
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="gradePer12">Grade in 12th</label>
-                  <input type="number" class="form-control" name="gradePer12" [(ngModel)]="studentModel.gradePer12"
-                    #gradePer12="ngModel" [ngClass]="{ 'is-invalid': f.submitted && gradePer12.invalid }" required />
-                  <div *ngIf="f.submitted && gradePer12.invalid" class="invalid-feedback">
-                    <div *ngIf="gradePer12.errors.required">GradePer12 is required</div>
-                  </div>
+                  <input type="number" class="form-control" name="gradePer12" [(ngModel)]="studentModel.gradePer12" />
+
                 </div>
               </div>
             </div>
@@ -455,33 +422,24 @@
             <div class="form-row">
               <div class="form-group col-4">
                 <label for="pastNeetMarks">Past NEET Marks</label>
-                <input type="number" class="form-control" name="pastNeetMarks" [(ngModel)]="studentModel.pastNeetMarks"
-                  #pastNeetMarks="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pastNeetMarks.invalid }"
-                  required />
-                <div *ngIf="f.submitted && pastNeetMarks.invalid" class="invalid-feedback">
-                  <div *ngIf="pastNeetMarks.errors.required">pastNeetMarks is required</div>
-                </div>
+                <input type="number" class="form-control" name="pastNeetMarks"
+                  [(ngModel)]="studentModel.pastNeetMarks" />
+
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="pastNeetAir">Past NEET AIR</label>
-                  <input type="number" class="form-control" name="pastNeetAir" [(ngModel)]="studentModel.pastNeetAir"
-                    #pastNeetAir="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pastNeetAir.invalid }" required />
-                  <div *ngIf="f.submitted && pastNeetAir.invalid" class="invalid-feedback">
-                    <div *ngIf="pastNeetAir.errors.required">pastNeetAir is required</div>
-                  </div>
+                  <input type="number" class="form-control" name="pastNeetAir" [(ngModel)]="studentModel.pastNeetAir" />
+
                 </div>
               </div>
 
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="pastNeetAsr">Past NEET Asr</label>
-                  <input type="number" class="form-control" name="pastNeetAsr" [(ngModel)]="studentModel.pastNeetAsr"
-                    #pastNeetAsr="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pastNeetAsr.invalid }" required />
-                  <div *ngIf="f.submitted && pastNeetAsr.invalid" class="invalid-feedback">
-                    <div *ngIf="pastNeetAsr.errors.required">pastNeetAsr is required</div>
-                  </div>
+                  <input type="number" class="form-control" name="pastNeetAsr" [(ngModel)]="studentModel.pastNeetAsr" />
+
                 </div>
               </div>
             </div>
@@ -495,11 +453,8 @@
                 <div class="form-group">
                   <label for="pastNeetAttempts">Past NEET Attempts No.</label>
                   <input type="number" class="form-control" name="pastNeetAttempts"
-                    [(ngModel)]="studentModel.pastNeetAttempts" #pastNeetAttempts="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && pastNeetAttempts.invalid }" required />
-                  <div *ngIf="f.submitted && pastNeetAttempts.invalid" class="invalid-feedback">
-                    <div *ngIf="pastNeetAttempts.errors.required">pastNeetAttempts is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.pastNeetAttempts" />
+
                 </div>
               </div>
 
@@ -507,11 +462,8 @@
                 <div class="form-group">
                   <label for="pastNeetRemarks">Enter Past NEET Remarks </label>
                   <input type="text" class="form-control" name="pastNeetRemarks"
-                    [(ngModel)]="studentModel.pastNeetRemarks" #pastNeetRemarks="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && pastNeetRemarks.invalid }" required />
-                  <div *ngIf="f.submitted && pastNeetRemarks.invalid" class="invalid-feedback">
-                    <div *ngIf="pastNeetRemarks.errors.required"> MobileNo of LocalGuardian is required</div>
-                  </div>
+                    [(ngModel)]="studentModel.pastNeetRemarks" />
+
                 </div>
               </div>
 
@@ -558,16 +510,8 @@
 
 
 
-
-
-
-
-
-
-
-
             <div class="form-group text-center">
-              <button class=" btn-primary btn-lg">Register</button>
+              <button class=" btn-primary btn-lg">Enrollment</button>
             </div>
           </form>
         </div>
@@ -576,6 +520,8 @@
   </div>
 
 </div>
+
+
 
 
 <div class="jumbotron p-4 m-4">
@@ -610,3 +556,181 @@
     </div>
   </form>
 </div>
+
+
+
+<div class="jumbotron p-4 m-4">
+  <div class="container">
+    <h1 class="display-4 text-danger"> Student Final Admission Section</h1>
+
+  </div>
+</div>
+
+<div class="container text-center">
+
+  <h4>Enter The Student Reference Number</h4>
+  <input type="text" [(ngModel)]="refForAdmission" name="refForAdmission">
+
+  <button class=" btn-primary " (click)="refAdmissionSubmit()">Go For Admission</button>
+
+</div>
+
+
+
+
+
+
+<!--Final Admission Form-->
+<div class="justify-content-center align-content-center m-3">
+  <!-- main app container -->
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h2>Student Admission Form</h2>
+
+          <form name="form" (ngSubmit)="j.form.valid && onAdmissionSubmit()" #j="ngForm" novalidate>
+
+
+            <div class="form-row">
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="referenceNo">Student Reference No.</label>
+                  <input type="text" disabled class="form-control" name="referenceNo"
+                    [(ngModel)]="admissionDto.referenceNo" #referenceNo="ngModel"
+                    [ngClass]="{ 'is-invalid': j.submitted && referenceNo.invalid }" required />
+                  <div *ngIf="j.submitted && referenceNo.invalid" class="invalid-feedback">
+                    <div *ngIf="referenceNo.errors.required">Reference No is required</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="name">Student Name</label>
+                  <input type="text" disabled class="form-control" name="name" [(ngModel)]="admissionDto.name" />
+
+                </div>
+              </div>
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="academicYear">Accademic Year</label>
+                  <input type="text" class="form-control" name="academicYear" [(ngModel)]="admissionDto.academicYear" />
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <!--**********************************-->
+
+
+            <div class="form-row">
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="batch">Batch</label>
+                  <input type="text" class="form-control" name="batch" [(ngModel)]="admissionDto.batch" #batch="ngModel"
+                    [ngClass]="{ 'is-invalid': j.submitted && batch.invalid }" required />
+                  <div *ngIf="j.submitted && batch.invalid" class="invalid-feedback">
+                    <div *ngIf="batch.errors.required">Batch No is required</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="classs">Class</label>
+                  <input type="text" class="form-control" name="classs" [(ngModel)]="admissionDto.classs"
+                    #classs="ngModel" [ngClass]="{ 'is-invalid': j.submitted && classs.invalid }" required />
+                  <div *ngIf="j.submitted && classs.invalid" class="invalid-feedback">
+                    <div *ngIf="classs.errors.required">Class is required</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="idCard">ID Card</label>
+                  <input type="text" class="form-control" name="idCard" [(ngModel)]="admissionDto.idCard"
+                    #idCard="ngModel" [ngClass]="{ 'is-invalid': f.submitted && idCard.invalid }" required />
+                  <div *ngIf="f.submitted && idCard.invalid" class="invalid-feedback">
+                    <div *ngIf="idCard.errors.required">Father Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!--**********************************-->
+
+
+            <div class="form-row">
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="bag">Bag</label>
+                  <select type="text" name="bag" class="form-control" [(ngModel)]="admissionDto.bag" #bag="ngModel"
+                    [ngClass]="{ 'is-invalid': j.submitted && bag.invalid }" required>
+                    <option value="Y">YES</option>
+                    <option value="N">NO</option>
+                  </select>
+                  <div *ngIf="j.submitted && bag.invalid" class="invalid-feedback">
+                    <div *ngIf="bag.errors.required">Plesae Select The bag option</div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="module">Module</label>
+                  <select type="text" name="module" class="form-control" [(ngModel)]="admissionDto.module"
+                    #module="ngModel" [ngClass]="{ 'is-invalid': j.submitted && module.invalid }" required>
+                    <option value="Y">YES</option>
+                    <option value="N">NO</option>
+                  </select>
+                  <div *ngIf="j.submitted && module.invalid" class="invalid-feedback">
+                    <div *ngIf="module.errors.required">Plesae Select The module option</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-4">
+                <div class="form-group">
+                  <label for="scholarship">Scholarship</label>
+                  <input type="text" class="form-control" name="scholarship" [(ngModel)]="admissionDto.scholarship" />
+
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-12">
+                <div class="form-group">
+                  <label for="installments">Installments</label>
+                  <input type="text" class="form-control" name="installments" [(ngModel)]="admissionDto.installments" />
+
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+
+            <div class="form-group text-center">
+              <button class=" btn-primary btn-lg">Admission</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>

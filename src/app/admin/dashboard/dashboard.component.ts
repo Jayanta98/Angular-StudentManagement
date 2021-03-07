@@ -18,22 +18,22 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStudents();
-   /* this.studentService.fetchClass11Count().subscribe(response =>{
-      if (response.statusCode === "SUCCESS") {
-        this.class11Count = response.studentsCount;
-      }
-    })
-    this.studentService.fetchClass12Count().subscribe(response =>{
-      if (response.statusCode === "SUCCESS") {
-        this.class12Count = response.studentsCount;
-      }
-    })
-    this.studentService.fetchClassTargetCount().subscribe(response =>{
-      if (response.statusCode === "SUCCESS") {
-        this.classTargetCount = response.studentsCount;
-      }
-    })*/
-    this.studentService.fetchCount().subscribe(response =>{
+    /* this.studentService.fetchClass11Count().subscribe(response =>{
+       if (response.statusCode === "SUCCESS") {
+         this.class11Count = response.studentsCount;
+       }
+     })
+     this.studentService.fetchClass12Count().subscribe(response =>{
+       if (response.statusCode === "SUCCESS") {
+         this.class12Count = response.studentsCount;
+       }
+     })
+     this.studentService.fetchClassTargetCount().subscribe(response =>{
+       if (response.statusCode === "SUCCESS") {
+         this.classTargetCount = response.studentsCount;
+       }
+     })*/
+    this.studentService.fetchCount().subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.studentsCount = response.studentsCount;
       }
@@ -45,10 +45,9 @@ export class DashboardComponent implements OnInit {
   sList: StudentRegister[];
 
   sListHeader = [
-    { headerName: 'Registration No', field: 'registrationNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'First Name', field: 'firstName', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Middle Name', field: 'middleName', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Last Name', field: 'lastName', filter: true, minWidth: 50, sortable: true, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Reference No', field: 'referenceNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Student Name', field: 'name', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+
     { headerName: 'Father Name', field: 'fatherName', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Mother Name', field: 'motherName', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Mobile No', field: 'mobileNo', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
@@ -67,7 +66,7 @@ export class DashboardComponent implements OnInit {
     { headerName: 'Registration Date', field: 'registrationDate', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Roll No', field: 'rollNo', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Category', field: 'category', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Amount Paid', field: 'amountPaid', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+
   ];
 
   getAllStudents() {

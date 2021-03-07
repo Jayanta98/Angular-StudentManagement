@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { StudentRegister } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
+import { AdmissionDto } from 'src/app/models/admission';
 
 @Component({
   selector: 'app-account',
@@ -54,5 +55,20 @@ export class AccountComponent implements OnInit {
       }
     })
 
+  }
+
+
+
+  //AdmissionDTO acivites
+  admissionDto: AdmissionDto = new AdmissionDto();
+
+  refForAdmission: number;
+  refAdmissionSubmit() {
+    alert(this.refForAdmission);
+    alert("admission called" + JSON.stringify(this.admissionDto));
+  }
+
+  onAdmissionSubmit() {
+    alert("admission called" + JSON.stringify(this.admissionDto));
   }
 }
