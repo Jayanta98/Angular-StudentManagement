@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ReceptionComponent implements OnInit {
 
-  constructor(private studentService: StudentService, 
+  constructor(private studentService: StudentService,
     private router: Router,
     private dialogService: DialogService) { }
 
@@ -23,39 +23,77 @@ export class ReceptionComponent implements OnInit {
   message: string;
   error: boolean;
   employeeId: number;
-  
-
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
-    /*this.dialogService.openConfirmDialog('Are you sure to add the record ?')
-    .afterClosed().subscribe(res =>{
-      if(res){
+   /* this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) => {
+      if(confirmed){
         this.studentService.register(this.studentModel).subscribe(data =>{
-          if(data.statusCode === "SUCCESS"){
-            alert(data.statusCode+" Note the Reference No: "+data.referenceNo)
+          if (data.statusCode === "SUCCESS") {
+            alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
             this.router.navigateByUrl("admin/dashboard")
           }
-          else{
+          else {
             this.error = true;
             this.message = data.statusMessage;
-            alert(data.statusCode+" ; "+this.message);
+            alert(data.statusCode + " ; " + this.message);
           }
         })
       }
     });*/
-    /* this.employeeId = parseInt(localStorage.getItem('employeeId'));
-     this.studentService.register(this.studentModel).subscribe(data => {
-       if(data.statusCode === "SUCCESS"){
-         //storing the data and navigate
-           alert(data.statusCode);
-         this.router.navigateByUrl("admin/dashboard");
-       }
-       else{
-         this.error = true;
-         this.message = data.statusMessage;
-          alert(data.statusCode+" ; "+this.message);
-       }
-     })*/
   }
+/*
 
+  onSubmitr() {
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.studentService.register(this.studentModel).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+              this.router.navigateByUrl("admin/dashboard")
+            }
+            else {
+              this.error = true;
+              this.message = data.statusMessage;
+              alert(data.statusCode + " ; " + this.message);
+            }
+          }
+        }
+      });
+  }
+}*/
 }
+        //.catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+/*this.dialogService.openConfirmDialog('Are you sure to add the record ?')
+.afterClosed().subscribe(res =>{
+  if(res){
+    this.studentService.register(this.studentModel).subscribe(data =>{
+      if(data.statusCode === "SUCCESS"){
+        alert(data.statusCode+" Note the Reference No: "+data.referenceNo)
+        this.router.navigateByUrl("admin/dashboard")
+      }
+      else{
+        this.error = true;
+        this.message = data.statusMessage;
+        alert(data.statusCode+" ; "+this.message);
+      }
+    })
+  }
+});*/
+/* this.employeeId = parseInt(localStorage.getItem('employeeId'));
+ this.studentService.register(this.studentModel).subscribe(data => {
+   if(data.statusCode === "SUCCESS"){
+     //storing the data and navigate
+       alert(data.statusCode);
+     this.router.navigateByUrl("admin/dashboard");
+   }
+   else{
+     this.error = true;
+     this.message = data.statusMessage;
+      alert(data.statusCode+" ; "+this.message);
+   }
+ })
+}  */
+
