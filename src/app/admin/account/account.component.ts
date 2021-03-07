@@ -103,6 +103,7 @@ export class AccountComponent implements OnInit {
     this.accountService.addTransaction(this.accountDto).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         alert(JSON.stringify(data.accountDto))
+        //generate receipt with accountDto
       }
       else {
         alert(data.statusMessage)
