@@ -1,3 +1,5 @@
+import { AccountService } from './../../services/account.service';
+import { AdmissionService } from './../../services/admission.service';
 import { Component, OnInit } from '@angular/core';
 
 import { StudentRegister } from 'src/app/models/student';
@@ -12,12 +14,15 @@ import { AccountDto } from 'src/app/models/account';
 })
 export class AccountComponent implements OnInit {
 
-  constructor(private studentService: StudentService) { }
+  constructor(private studentService: StudentService, 
+    private admissionService: AdmissionService,
+    private accountService: AccountService) { }
 
   ngOnInit(): void {
   }
 
   studentModel: StudentRegister = new StudentRegister();
+  studentAdmission: StudentRegister = new StudentRegister();
   ref: number;
   percentageScholarship: number;
   actualCourseFees: number;
@@ -67,10 +72,27 @@ export class AccountComponent implements OnInit {
   refAdmissionSubmit() {
     alert(this.refForAdmission);
     alert("admission called" + JSON.stringify(this.admissionDto));
+    this.studentService.fetchStudent(this.refForAdmission).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        this.studentModel = data.student
+        alert(JSON.stringify(data.student))
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
   }
 
   onAdmissionSubmit() {
     alert("admission called" + JSON.stringify(this.admissionDto));
+    this.admissionService.admission(this.admissionDto).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert("Roll No of Student : "+data.rollNo)
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
   }
 
   //AccountDto activity
@@ -78,6 +100,14 @@ export class AccountComponent implements OnInit {
 
   onPaymentSubmit() {
     alert("Payment");
+    this.accountService.addTransaction(this.accountDto).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert(JSON.stringify(data.accountDto))
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
   }
 
 
