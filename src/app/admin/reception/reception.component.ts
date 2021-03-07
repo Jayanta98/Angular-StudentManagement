@@ -23,10 +23,11 @@ export class ReceptionComponent implements OnInit {
   message: string;
   error: boolean;
   employeeId: number;
+  
 
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
-    this.dialogService.openConfirmDialog('Are you sure to add the record ?')
+    /*this.dialogService.openConfirmDialog('Are you sure to add the record ?')
     .afterClosed().subscribe(res =>{
       if(res){
         this.studentService.register(this.studentModel).subscribe(data =>{
@@ -41,7 +42,7 @@ export class ReceptionComponent implements OnInit {
           }
         })
       }
-    });
+    });*/
     /* this.employeeId = parseInt(localStorage.getItem('employeeId'));
      this.studentService.register(this.studentModel).subscribe(data => {
        if(data.statusCode === "SUCCESS"){
