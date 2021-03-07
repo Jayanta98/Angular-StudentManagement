@@ -29,7 +29,17 @@ export class ReceptionComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to add the record ?')
     .afterClosed().subscribe(res =>{
       if(res){
-        alert("Saved")
+        this.studentService.register(this.studentModel).subscribe(data =>{
+          if(data.statusCode === "SUCCESS"){
+            alert(data.statusCode+" Note the Reference No: "+data.referenceNo)
+            this.router.navigateByUrl("admin/dashboard")
+          }
+          else{
+            this.error = true;
+            this.message = data.statusMessage;
+            alert(data.statusCode+" ; "+this.message);
+          }
+        })
       }
     });
     /* this.employeeId = parseInt(localStorage.getItem('employeeId'));

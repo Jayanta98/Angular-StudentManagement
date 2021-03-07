@@ -1,4 +1,4 @@
-import { EmployeeStatus } from './models/employee-status';
+import { EmployeeStatus } from './models/employee';
 import { EmployeeService } from './services/employee.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
@@ -29,7 +29,7 @@ export class AuthgardGuard implements CanActivate {
         this.emp=res;
       });
      // alert(this.empID+2)
-      if((this.empID===this.emp.employeeId) && (this.empfname==this.emp.firstName))
+      if((this.empID===this.emp.employeeId) && (this.empfname==this.emp.name))
       {
          // alert(this.empID+2)
         return true;

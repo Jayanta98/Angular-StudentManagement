@@ -31,11 +31,28 @@ export class AccountComponent implements OnInit {
   }
 
   refSubmit() {
-    alert(this.ref);
+    this.studentService.fetchStudent(this.ref).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        this.studentModel = data.student
+        alert(JSON.stringify(data.student))
+      }
+      else {
+        alert(data.statusMessage)
+      }
+
+    })
   }
 
   onSubmit() {
-    alert(JSON.stringify(this.studentModel));
-  }
+    alert(JSON.stringify(this.studentModel))
+    this.studentService.updateStudent(this.studentModel).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+      }
+      else {
+        alert(data.statusMessage)
+      }
+    })
 
+  }
 }

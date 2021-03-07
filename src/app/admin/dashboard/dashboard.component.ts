@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StudentList, StudentSaved } from 'src/app/models/student';
+import { StudentListDto, StudentRegister } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStudents();
-    this.studentService.fetchClass11Count().subscribe(response =>{
+   /* this.studentService.fetchClass11Count().subscribe(response =>{
       if (response.statusCode === "SUCCESS") {
         this.class11Count = response.studentsCount;
       }
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
       if (response.statusCode === "SUCCESS") {
         this.classTargetCount = response.studentsCount;
       }
-    })
+    })*/
     this.studentService.fetchCount().subscribe(response =>{
       if (response.statusCode === "SUCCESS") {
         this.studentsCount = response.studentsCount;
@@ -41,8 +41,8 @@ export class DashboardComponent implements OnInit {
 
   }
 
-  studentList: StudentList = new StudentList();
-  sList: StudentSaved[];
+  studentList: StudentListDto = new StudentListDto();
+  sList: StudentRegister[];
 
   sListHeader = [
     { headerName: 'Registration No', field: 'registrationNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },

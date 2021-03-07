@@ -66,3 +66,7 @@ export class StudentListDto extends Status {
   //when student data to be fetched
   public studentList: StudentRegister[];
 }
+
+export class StudentDto extends Status{
+  public student: StudentRegister
+}
