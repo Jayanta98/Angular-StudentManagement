@@ -12,6 +12,7 @@ import { ExamcellComponent } from './examcell/examcell.component';
 import { AccountComponent } from './account/account.component';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
+import { AdmissionComponent } from './admission/admission.component';
 
 
 
@@ -22,6 +23,7 @@ import { AgGridModule } from 'ag-grid-angular';
     DashboardComponent,
     ExamcellComponent,
     AccountComponent,
+    AdmissionComponent,
 
 
   ],
