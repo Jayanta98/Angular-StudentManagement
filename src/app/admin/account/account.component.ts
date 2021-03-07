@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentRegister } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { AdmissionDto } from 'src/app/models/admission';
+import { AccountDto } from 'src/app/models/account';
 
 @Component({
   selector: 'app-account',
@@ -71,4 +72,13 @@ export class AccountComponent implements OnInit {
   onAdmissionSubmit() {
     alert("admission called" + JSON.stringify(this.admissionDto));
   }
+
+  //AccountDto activity
+  accountDto: AccountDto = new AccountDto();
+
+  onPaymentSubmit() {
+    alert("Payment");
+  }
+
+
 }
