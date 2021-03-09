@@ -33,6 +33,9 @@ export class AccountComponent implements OnInit {
           this.accountService.addTransaction(this.accountDto).subscribe(data => {
             if (data.statusCode === "SUCCESS") {
               alert(JSON.stringify(data.accountDto))
+              this.dialogService.notify("test","Some").then((confirmed) => {
+
+              })
               //generate receipt with accountDto
             }
             else {
@@ -41,6 +44,8 @@ export class AccountComponent implements OnInit {
           })
         }
       });
+      
+    
 
   }
 

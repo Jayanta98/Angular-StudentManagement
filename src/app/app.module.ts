@@ -13,13 +13,15 @@ import { FormsModule } from '@angular/forms';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationComponent } from './notification/notification.component';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

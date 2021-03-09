@@ -1,3 +1,4 @@
+import { NotificationComponent } from './../notification/notification.component';
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -23,6 +24,19 @@ export class DialogService {
     });*/
   }
 
+  public notify(
+    title: string,
+    message: string,
+    btnOkText: string = 'OK',
+    dialogSize: 'sm'|'lg' = 'sm'): Promise<boolean> {
+    const modalRef = this.modalService.open(NotificationComponent, { size: dialogSize });
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.btnOkText = btnOkText;
+
+    return modalRef.result;
+  }
+
   public confirm(
     title: string,
     message: string,
@@ -37,4 +51,5 @@ export class DialogService {
 
     return modalRef.result;
   }
+
 }
