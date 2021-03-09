@@ -56,6 +56,9 @@ export class StudentRegister {
 
   public medium: string;
   public demoCard: string;
+  public counsellor: string;
+  public counsellorName: string;
+  public date: Date;
 }
 
 export class StudentsCount extends Status {

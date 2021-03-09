@@ -1,3 +1,4 @@
+
 import { AdmissionDto } from './../../models/admission';
 import { DialogService } from './../../services/dialog.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,10 +13,10 @@ import { StudentService } from 'src/app/services/student.service';
   styleUrls: ['./admission.component.css']
 })
 export class AdmissionComponent implements OnInit {
-
   constructor(private studentService: StudentService,
     private admissionService: AdmissionService,
     private dialogService: DialogService) { }
+    selection: string
 
   ngOnInit(): void {
   }
@@ -126,12 +127,27 @@ export class AdmissionComponent implements OnInit {
 
   }
 
-  updateAdmission(updateAdmissionDto: AdmissionDto){
-    alert("Confirm Admission Update for "+ updateAdmissionDto.rollNo)
+  
+  rollNo: number
+  updateAdmissionDto: AdmissionDto
+  getAdmission(){
+    this.admissionService.getAdmission(this.rollNo).subscribe(data =>{
+      if(data.statusCode === "SUCCESS"){
+        alert("Fetch Success")
+        this.updateAdmissionDto = data.admissionDto
+      }
+      else {
+        alert("Updation Failed")
+      }
+    })
+  }
+
+  updateAdmission(){
+    alert("Confirm Admission Update for "+ this.updateAdmissionDto.rollNo)
     this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
         if (confirmed) {
-          this.admissionService.updateAdmission(updateAdmissionDto).subscribe(data =>{
+          this.admissionService.updateAdmission(this.updateAdmissionDto).subscribe(data =>{
             if(data.statusCode === "SUCCESS"){
               alert("Update Success for student with roll number : "+data.rollNo)
             }

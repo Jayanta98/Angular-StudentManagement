@@ -73,7 +73,7 @@
                     <option value="ST">ST</option>
                   </select>
                   <div *ngIf="f.submitted && category.invalid" class="invalid-feedback">
-                    <div *ngIf="category.errors.required">Plesae Select the category</div>
+                    <div *ngIf="category.errors.required">Please Select the category</div>
                   </div>
                 </div>
               </div>
@@ -170,7 +170,7 @@
                     <option value="ENGLISH">English</option>
                   </select>
                   <div *ngIf="f.submitted && medium.invalid" class="invalid-feedback">
-                    <div *ngIf="medium.errors.required">Plesae Select The medium</div>
+                    <div *ngIf="medium.errors.required">Please Select The medium</div>
                   </div>
                 </div>
               </div>
@@ -184,13 +184,47 @@
                     <option value="N">NO</option>
                   </select>
                   <div *ngIf="f.submitted && demoCard.invalid" class="invalid-feedback">
-                    <div *ngIf="demoCard.errors.required">Plesae Select The DemoCard option</div>
+                    <div *ngIf="demoCard.errors.required">Please Select The DemoCard option</div>
                   </div>
                 </div>
               </div>
 
 
             </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="counsellor">Select counsellor</label>
+                  <select type="text" name="counsellor" class="form-control" [(ngModel)]="studentModel.counsellor"
+                    #counsellor="ngModel" [ngClass]="{ 'is-invalid': f.submitted && counsellor.invalid }" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                  </select>
+                  <div *ngIf="f.submitted && counsellor.invalid" class="invalid-feedback">
+                    <div *ngIf="counsellor.errors.required">Please Select The counsellor</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="counsellorName">Counsellor Name</label>
+                  <input type="text" class="form-control" name="counsellorName"
+                    [(ngModel)]="studentModel.counsellorName" #counsellorName="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && counsellorName.invalid }" required />
+                  <div *ngIf="f.submitted && counsellorName.invalid" class="invalid-feedback">
+                    <div *ngIf="counsellorName.errors.required">Counsellor Name is required</div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
 
 
 
