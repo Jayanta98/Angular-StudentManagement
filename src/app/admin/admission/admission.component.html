@@ -551,7 +551,8 @@
 
     <div class="container " style="margin-bottom: 50px;">
       <label for="uname"><b>Scholarship Calculator</b></label><br />
-      <label for="uname" style="color:blue"><b>Student is getting {{offfer | currency:"INR"}} Scholarship</b></label>
+      <label for="uname" style="color:blue"><b>Student is getting {{offfer | currency:"INR"}}
+          Scholarship</b></label><br>
       <label for="uname" style="color:blue"><b>Student has to Pay {{finalFessPay | currency:"INR"}} Fees
           Ammount</b></label><br>
 
@@ -561,7 +562,7 @@
       <input type="number" class="feesInput" placeholder="Enter % of Scholarship " name="percentageScholarship"
         [(ngModel)]="percentageScholarship" required>
 
-      <button (click)="scholarshipFeesCal()" class="mybutton bg-primary">Calculate</button>
+      <button (click)="scholarshipFeesCal()" class="mybutton btn bg-primary">Calculate</button>
 
     </div>
   </form>

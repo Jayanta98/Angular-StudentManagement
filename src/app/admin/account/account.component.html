@@ -12,50 +12,44 @@
 
 
 
-  <div class="jumbotron p-4 m-4">
+
+
+
+<!--Final Admission Form-->
+<div class="justify-content-center align-content-center m-3">
+  <!-- main app container -->
+  <div class="jumbotron">
     <div class="container">
-      <h1 class="display-4 text-danger"> Student Payment Section</h1>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <h2>Student Payment Form</h2>
 
-    </div>
-  </div>
-
-
-  <!--Final Admission Form-->
-  <div class="justify-content-center align-content-center m-3">
-    <!-- main app container -->
-    <div class="jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 offset-md-2">
-            <h2>Student Payment Form</h2>
-
-            <form name="form" (ngSubmit)="t.form.valid && onPaymentSubmit()" #t="ngForm" novalidate>
+          <form name="form" (ngSubmit)="t.form.valid && onPaymentSubmit()" #t="ngForm" novalidate>
 
 
-              <div class="form-row">
-                <div class="form-group col-6">
-                  <div class="form-group">
-                    <label for="rollNo">Student Roll Number</label>
-                    <input type="text" class="form-control" name="rollNo" [(ngModel)]="accountDto.rollNo"
-                      #rollNo="ngModel" [ngClass]="{ 'is-invalid': t.submitted && rollNo.invalid }" required />
-                    <div *ngIf="t.submitted && rollNo.invalid" class="invalid-feedback">
-                      <div *ngIf="rollNo.errors.required">Roll Number is required</div>
-                    </div>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="rollNo">Student Roll Number</label>
+                  <input type="text" class="form-control" name="rollNo" [(ngModel)]="accountDto.rollNo"
+                    #rollNo="ngModel" [ngClass]="{ 'is-invalid': t.submitted && rollNo.invalid }" required />
+                  <div *ngIf="t.submitted && rollNo.invalid" class="invalid-feedback">
+                    <div *ngIf="rollNo.errors.required">Roll Number is required</div>
                   </div>
                 </div>
-                <div class="form-group col-6">
-                  <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="text" class="form-control" name="amount" [(ngModel)]="accountDto.amount"
-                      #amount="ngModel" [ngClass]="{ 'is-invalid': t.submitted && amount.invalid }" required />
-                    <div *ngIf="t.submitted && amount.invalid" class="invalid-feedback">
-                      <div *ngIf="amount.errors.required">Amount is required</div>
-                    </div>
+              </div>
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input type="text" class="form-control" name="amount" [(ngModel)]="accountDto.amount"
+                    #amount="ngModel" [ngClass]="{ 'is-invalid': t.submitted && amount.invalid }" required />
+                  <div *ngIf="t.submitted && amount.invalid" class="invalid-feedback">
+                    <div *ngIf="amount.errors.required">Amount is required</div>
                   </div>
                 </div>
-
               </div>
 
+            </div>
 
 
 
@@ -64,12 +58,13 @@
 
 
 
-              <div class="form-group text-center">
-                <button class=" btn-primary btn-lg">Save</button>
-              </div>
-            </form>
 
-          </div>
+            <div class="form-group text-center">
+              <button class=" btn-primary btn-lg">Save</button>
+            </div>
+          </form>
+
         </div>
       </div>
     </div>
+  </div>

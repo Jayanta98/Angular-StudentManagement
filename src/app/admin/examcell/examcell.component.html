@@ -31,3 +31,18 @@
     <p class="lead">View the marks of the students by using Roll Number and Exam Code</p>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xl-12 justify-content-center align-content-center">
+    <h2 class="text-center">Marks of All Students </h2>
+    <div class="card-box">
+      <div class="container m-3 p-2">
+        <ag-grid-angular style="margin:10px;height:200px !important" class="ag-theme-alpine"
+          [columnDefs]="resultListHeader" [rowData]="resultList" [pagination]="true" [paginationPageSize]="2">
+        </ag-grid-angular>
+
+      </div>
+
+
+    </div>
+  </div>
