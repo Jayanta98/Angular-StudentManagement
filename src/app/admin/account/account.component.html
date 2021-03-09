@@ -16,7 +16,7 @@
 
 
 <!--Final Admission Form-->
-<div class="justify-content-center align-content-center m-3">
+<div class="justify-content-center align-content-center m-5">
   <!-- main app container -->
   <div class="jumbotron">
     <div class="container">
@@ -52,13 +52,6 @@
             </div>
 
 
-
-
-
-
-
-
-
             <div class="form-group text-center">
               <button class=" btn-primary btn-lg">Save</button>
             </div>
@@ -68,3 +61,48 @@
       </div>
     </div>
   </div>
+
+
+
+  <div class="content">
+
+    <div class="jumbotron p-4 m-1">
+      <div class="container">
+        <h1 class="display-4 text-danger">Payment Display Board</h1>
+        <p class="lead">View the payment history of the students by using Roll Number </p>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card m-4">
+    <h2 class="card-header text-center text-success">Payment History By RollNumber </h2>
+    <div class="card-body">
+      <div class="container text-center mb-5 p-3">
+        <h4>Enter The Student Roll Number</h4>
+        <input type="text" [(ngModel)]="rollNoforPayment" name="rollNo" class="form-control-border">
+        <button class=" btn-primary " (click)="paymentListRollNo()">Search</button>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <div class="row" *ngIf="isShow">
+      <div class="col-xl-12 justify-content-center align-content-center p-2">
+        <h3 class="text-center">Payment Details of Student </h3>
+        <div class="card-box">
+          <div class="container m-1 p-2">
+            <ag-grid-angular style="margin:10px;height:200px !important" class="ag-theme-alpine"
+              [columnDefs]="transactionsListHeader" [rowData]="transactionsList" [pagination]="true"
+              [paginationPageSize]="2">
+            </ag-grid-angular>
+
+          </div>
+        </div>
+      </div>
+    </div>

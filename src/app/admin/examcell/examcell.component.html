@@ -32,17 +32,57 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xl-12 justify-content-center align-content-center">
-    <h2 class="text-center">Marks of All Students </h2>
+
+<div class="row mb-5">
+  <div class="col-6 mb-3">
+    <div class="card m-4">
+      <h2 class="card-header text-center text-success">Marks By RollNumber </h2>
+      <div class="card-body">
+        <div class="container text-center mb-5 p-3">
+          <h4>Enter The Student Roll Number</h4>
+          <input type="text" [(ngModel)]="rollNo" name="rollNo" class="form-control-border">
+          <button class=" btn-primary " (click)="onRollNoSubmit()">Search</button>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="col-6 mb-3">
+    <div class="card m-4">
+      <h2 class="card-header text-center text-success">Marks By TestCode </h2>
+      <div class="card-body">
+        <div class="container text-center mb-5 p-3">
+          <h4>Enter The Test Code</h4>
+          <input type="text" [(ngModel)]="testCode" name="rollNo">
+          <button class=" btn-primary " (click)="onTestCodeSubmit()">Search</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+
+<div class="row" *ngIf="isShow">
+  <div class="col-xl-12 justify-content-center align-content-center p-2">
+    <h3 class="text-center">Marks of Students </h3>
     <div class="card-box">
-      <div class="container m-3 p-2">
+      <div class="container m-1 p-2">
         <ag-grid-angular style="margin:10px;height:200px !important" class="ag-theme-alpine"
           [columnDefs]="resultListHeader" [rowData]="resultList" [pagination]="true" [paginationPageSize]="2">
         </ag-grid-angular>
 
       </div>
-
-
     </div>
   </div>
+</div>

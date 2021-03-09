@@ -38,6 +38,9 @@ export class ExamcellComponent implements OnInit {
 
   rollNo: number;
   resultList: Result[];
+  /*  { headerName: 'Total Right', field: 'right', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Total Wrong', field: 'wrong', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Total blank', field: 'blank', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },*/
 
   resultListHeader = [
     { headerName: 'Serial No', field: 'serialNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
@@ -45,9 +48,7 @@ export class ExamcellComponent implements OnInit {
     { headerName: 'Test Code', field: 'testCode', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Medium', field: 'medium', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Total Score', field: 'score', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Total Right', field: 'right', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Total Wrong', field: 'wrong', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-    { headerName: 'Total blank', field: 'blank', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+
     { headerName: 'Rank', field: 'rank', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Physics', field: 'physics', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Chemistry', field: 'chemistry', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
@@ -55,12 +56,15 @@ export class ExamcellComponent implements OnInit {
     { headerName: 'Zoology', field: 'zoology', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
   ]
 
+
+  isShow = false;
   onRollNoSubmit() {
     alert(JSON.stringify(this.rollNo));
     this.examCellService.fetchByRollNo(this.rollNo).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         this.resultList = data.resultsList
         alert(JSON.stringify(this.resultList));
+        this.isShow = true;
 
       }
       else {
@@ -76,6 +80,7 @@ export class ExamcellComponent implements OnInit {
       if (data.statusCode === "SUCCESS") {
         this.resultList = data.resultsList
         alert(JSON.stringify(this.resultList));
+        this.isShow=true;
 
       }
       else {

@@ -66,6 +66,8 @@ export class DashboardComponent implements OnInit {
     { headerName: 'Registration Date', field: 'registrationDate', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Roll No', field: 'rollNo', filter: true, sortable: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
     { headerName: 'Category', field: 'category', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Councillor Desk', field: 'counsellor', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Councillor Name', field: 'counsellorName', filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
 
   ];
 

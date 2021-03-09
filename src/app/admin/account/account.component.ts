@@ -33,7 +33,7 @@ export class AccountComponent implements OnInit {
           this.accountService.addTransaction(this.accountDto).subscribe(data => {
             if (data.statusCode === "SUCCESS") {
               alert(JSON.stringify(data.accountDto))
-              this.dialogService.notify("test","Some").then((confirmed) => {
+              this.dialogService.notify("test", "Some").then((confirmed) => {
 
               })
               //generate receipt with accountDto
@@ -44,59 +44,73 @@ export class AccountComponent implements OnInit {
           })
         }
       });
-      
-    
+
+
 
   }
 
-  rollNo: number
-  transactionsList: AccountDto[]
-  paymentListRollNo(){
+  rollNoforPayment: number;
+  transactionsList: AccountDto[];
+  isShow = false;
 
-    this.accountService.getTransactionsWithRollNo(this.rollNo).subscribe(data =>{
-      if(data.statusCode === "SUCCESS"){
+  transactionsListHeader = [
+    { headerName: 'Transaction ID', field: 'transactionId', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Student Roll No.', field: 'rollNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Student Name', field: 'name', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Amount Paid', field: 'amount', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Payment DateTime', field: 'dateTime', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+
+
+
+  ]
+
+  paymentListRollNo() {
+
+    this.accountService.getTransactionsWithRollNo(this.rollNoforPayment).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
         alert("Transactions Fetch Success")
-        this.transactionsList = data.accountDtos
+        this.transactionsList = data.accountDtos;
+        this.isShow = true;
       }
-      else{
+      else {
         alert("Transactions Fetch Failed")
-        this.transactionsList.splice(0,this.transactionsList.length)
+        this.transactionsList.splice(0, this.transactionsList.length)
       }
     })
   }
 
   fromDate: Date
   toDate: Date
-  paymentListDates(){
-    this.accountService.getTransactionsWithDates(this.fromDate,this.toDate).subscribe(data => {
-      if(data.statusCode === "SUCCESS"){
+  paymentListDates() {
+    this.accountService.getTransactionsWithDates(this.fromDate, this.toDate).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
         alert("Transactions Fetch Success")
         this.transactionsList = data.accountDtos
       }
-      else{
+      else {
         alert("Transactions Fetch Failed")
-        this.transactionsList.splice(0,this.transactionsList.length)
+        this.transactionsList.splice(0, this.transactionsList.length)
       }
     })
   }
 
   transactionId: number
-  fetchTransaction(){
+  fetchTransaction() {
     this.accountService.getTransaction(this.transactionId).subscribe(data => {
-      if(data.statusCode === "SUCCESS"){
+      if (data.statusCode === "SUCCESS") {
         alert("Transactions Fetch Success")
-        this.transactionsList.splice(0,this.transactionsList.length)
+        this.transactionsList.splice(0, this.transactionsList.length)
         this.transactionsList.push(data.accountDto)
       }
-      else{
+      else {
         alert("Transactions Fetch Failed")
-        this.transactionsList.splice(0,this.transactionsList.length)
+        this.transactionsList.splice(0, this.transactionsList.length)
       }
     })
   }
 
   updateAccountDto: AccountDto
-  updatePayment(){
+  updatePayment() {
     alert("Update payment")
     this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
@@ -114,7 +128,7 @@ export class AccountComponent implements OnInit {
       });
   }
 
-  deletePayment(trId){
+  deletePayment(trId) {
     alert("Delete Transaction")
     this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
