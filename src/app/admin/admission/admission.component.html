@@ -60,12 +60,41 @@
 </p>
 <div class="collapse" id="collapseExample">
   <div class="container text-center">
+    <form name="form" (ngSubmit)="q.form.valid && refSubmit()" #q="ngForm" novalidate>
+      <div class="form-row">
+        <div class="form-group col-6">
+          <div class="form-group">
+            <label for="selectionn">Select Roll/Reference No</label>
+            <select type="text" name="selectionn" class="form-control" [(ngModel)]="selectionn"
+               required>
+              <option value="ref">Reference Number</option>
+              <option value="roll">Roll Number</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <div class="form-group">
+            <label for="refRollNo">Student Reference/Roll No.</label>
+            <input type="number" name="refRollNo" class="form-control" [(ngModel)]="refRollNo"
+              required />
+            <div *ngIf="q.submitted " class="invalid-feedback">
+              <div *ngIf="refRollNo.errors.required">Reference No is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <h4>Enter The Reference Number</h4>
+      <div class="form-group text-center">
+        <button class=" btn-primary btn-lg">Admission</button>
+      </div>
+
+    </form>
+
+    <!-- <h4>Enter The Reference Number</h4>
     <input type="text" [(ngModel)]="ref" name="ref">
 
     <button class=" btn-primary " (click)="refSubmit()">Go For Enrollment</button>
-
+  -->
   </div>
 </div>
 
@@ -805,42 +834,42 @@
   <div class="container text-center">
 
     <h4>Enter The Student Roll Number</h4>
-    <input type="text" [(ngModel)]="studentRollNo" name="studentRollNo">
-  
+    <input type="number" [(ngModel)]="getRollNo" name="getRollNo">
+
     <button class=" btn-primary " (click)="getAdmission()">Submit Roll Number</button>
-  
+
   </div>
   <!--Final Admission Form-->
-<div class="justify-content-center align-content-center m-3">
-  <!-- main app container -->
-  <div class="jumbotron">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          <h2>Student Admission Update</h2>
+  <div class="justify-content-center align-content-center m-3">
+    <!-- main app container -->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <h2>Student Admission Update</h2>
 
-          <form name="form"  #p="ngForm" novalidate>
+            <form name="form" #p="ngForm" novalidate>
 
-            <div class="form-row">
+              <div class="form-row">
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="rollNo">Student Roll No.</label>
-                  <input type="text" disabled class="form-control" name="rollNo"
-                    [(ngModel)]="updateAdmissionDto.rollNo" #rollNo="ngModel"
-                    [ngClass]="{ 'is-invalid': p.submitted && referenceNo.invalid }" required />
-                  <div *ngIf="p.submitted" class="invalid-feedback">
-                    <div *ngIf="rollNo.errors.required">Roll No is required</div>
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="rolllNo">Student Roll No.</label>
+                    <input type="text" disabled class="form-control" name="rolllNo"
+                      [(ngModel)]="updateAdmissionDto.rollNo" #rolllNo="ngModel"
+                      [ngClass]="{ 'is-invalid': p.submitted && rolllNo.invalid }" required />
+                    <div *ngIf="p.submitted" class="invalid-feedback">
+                      <div *ngIf="rolllNo.errors.required">Roll No is required</div>
+                    </div>
                   </div>
                 </div>
+
               </div>
 
-            </div>
 
+              <div class="form-row">
 
-            <div class="form-row">
-
-              <!--<div class="form-group col-4">
+                <!--<div class="form-group col-4">
                 <div class="form-group">
                   <label for="medium">Select Roll/Reference No</label>
                   <select type="text" name="selection" class="form-control" [(ngModel)]="selection"
@@ -854,142 +883,146 @@
                 </div>
               </div>-->
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="referenceNo">Student Reference No.</label>
-                  <input type="text" disabled class="form-control" name="referenceNo"
-                    [(ngModel)]="updateAdmissionDto.referenceNo" #referenceNo="ngModel"
-                    [ngClass]="{ 'is-invalid': p.submitted && referenceNo.invalid }" required />
-                  <div *ngIf="p.submitted && referenceNo.invalid" class="invalid-feedback">
-                    <div *ngIf="referenceNo.errors.required">Reference No is required</div>
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="referenceNo">Student Reference No.</label>
+                    <input type="text" disabled class="form-control" name="referenceNo"
+                      [(ngModel)]="updateAdmissionDto.referenceNo" #referenceNo="ngModel"
+                      [ngClass]="{ 'is-invalid': p.submitted && referenceNo.invalid }" required />
+                    <div *ngIf="p.submitted && referenceNo.invalid" class="invalid-feedback">
+                      <div *ngIf="referenceNo.errors.required">Reference No is required</div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="name">Student Name</label>
-                  <input type="text" disabled class="form-control" name="name" [(ngModel)]="updateAdmissionDto.name" />
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" disabled class="form-control" name="name"
+                      [(ngModel)]="updateAdmissionDto.name" />
 
-                </div>
-              </div>
-
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="academicYear">Academic Year</label>
-                  <input type="text" class="form-control" name="academicYear" [(ngModel)]="updateAdmissionDto.academicYear" />
-
-                </div>
-              </div>
-
-            </div>
-
-
-            <!--**********************************-->
-
-
-            <div class="form-row">
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="batch">Batch</label>
-                  <input type="text" class="form-control" name="batch" [(ngModel)]="updateAdmissionDto.batch" #batch="ngModel"
-                    [ngClass]="{ 'is-invalid': p.submitted && batch.invalid }" required />
-                  <div *ngIf="p.submitted && batch.invalid" class="invalid-feedback">
-                    <div *ngIf="batch.errors.required">Batch No is required</div>
                   </div>
                 </div>
-              </div>
 
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="academicYear">Academic Year</label>
+                    <input type="text" class="form-control" name="academicYear"
+                      [(ngModel)]="updateAdmissionDto.academicYear" />
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="classs">Class</label>
-                  <input type="text" class="form-control" name="classs" [(ngModel)]="updateAdmissionDto.classs"
-                    #classs="ngModel" [ngClass]="{ 'is-invalid': p.submitted && classs.invalid }" required />
-                  <div *ngIf="p.submitted && classs.invalid" class="invalid-feedback">
-                    <div *ngIf="classs.errors.required">Class is required</div>
                   </div>
                 </div>
+
               </div>
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="idCard">ID Card</label>
-                  <input type="text" class="form-control" name="idCard" [(ngModel)]="updateAdmissionDto.idCard"
-                    #idCard="ngModel" [ngClass]="{ 'is-invalid': p.submitted && idCard.invalid }" required />
-                  <div *ngIf="p.submitted && idCard.invalid" class="invalid-feedback">
-                    <div *ngIf="idCard.errors.required">Father Name is required</div>
+
+              <!--**********************************-->
+
+
+              <div class="form-row">
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="batch">Batch</label>
+                    <input type="text" class="form-control" name="batch" [(ngModel)]="updateAdmissionDto.batch"
+                      #batch="ngModel" [ngClass]="{ 'is-invalid': p.submitted && batch.invalid }" required />
+                    <div *ngIf="p.submitted && batch.invalid" class="invalid-feedback">
+                      <div *ngIf="batch.errors.required">Batch No is required</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-            </div>
 
 
-            <!--**********************************-->
-
-
-            <div class="form-row">
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="bag">Bag</label>
-                  <select type="text" name="bag" class="form-control" [(ngModel)]="updateAdmissionDto.bag" #bag="ngModel"
-                    [ngClass]="{ 'is-invalid': p.submitted && bag.invalid }" required>
-                    <option value="Y">YES</option>
-                    <option value="N">NO</option>
-                  </select>
-                  <div *ngIf="p.submitted && bag.invalid" class="invalid-feedback">
-                    <div *ngIf="bag.errors.required">Please Select The bag option</div>
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="classs">Class</label>
+                    <input type="text" class="form-control" name="classs" [(ngModel)]="updateAdmissionDto.classs"
+                      #classs="ngModel" [ngClass]="{ 'is-invalid': p.submitted && classs.invalid }" required />
+                    <div *ngIf="p.submitted && classs.invalid" class="invalid-feedback">
+                      <div *ngIf="classs.errors.required">Class is required</div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="module">Module</label>
-                  <select type="text" name="module" class="form-control" [(ngModel)]="updateAdmissionDto.module"
-                    #module="ngModel" [ngClass]="{ 'is-invalid': p.submitted && module.invalid }" required>
-                    <option value="Y">YES</option>
-                    <option value="N">NO</option>
-                  </select>
-                  <div *ngIf="p.submitted && module.invalid" class="invalid-feedback">
-                    <div *ngIf="module.errors.required">Please Select The module option</div>
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="idCard">ID Card</label>
+                    <input type="text" class="form-control" name="idCard" [(ngModel)]="updateAdmissionDto.idCard"
+                      #idCard="ngModel" [ngClass]="{ 'is-invalid': p.submitted && idCard.invalid }" required />
+                    <div *ngIf="p.submitted && idCard.invalid" class="invalid-feedback">
+                      <div *ngIf="idCard.errors.required">Father Name is required</div>
+                    </div>
                   </div>
                 </div>
+
               </div>
 
-              <div class="form-group col-4">
-                <div class="form-group">
-                  <label for="scholarship">Scholarship</label>
-                  <input type="text" class="form-control" name="scholarship" [(ngModel)]="updateAdmissionDto.scholarship" />
 
+              <!--**********************************-->
+
+
+              <div class="form-row">
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="bag">Bag</label>
+                    <select type="text" name="bag" class="form-control" [(ngModel)]="updateAdmissionDto.bag"
+                      #bag="ngModel" [ngClass]="{ 'is-invalid': p.submitted && bag.invalid }" required>
+                      <option value="Y">YES</option>
+                      <option value="N">NO</option>
+                    </select>
+                    <div *ngIf="p.submitted && bag.invalid" class="invalid-feedback">
+                      <div *ngIf="bag.errors.required">Please Select The bag option</div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-            </div>
 
 
-            <div class="form-row">
-              <div class="form-group col-12">
-                <div class="form-group">
-                  <label for="installments">Installments</label>
-                  <input type="text" class="form-control" name="installments" [(ngModel)]="updateAdmissionDto.installments" />
-
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="module">Module</label>
+                    <select type="text" name="module" class="form-control" [(ngModel)]="updateAdmissionDto.module"
+                      #module="ngModel" [ngClass]="{ 'is-invalid': p.submitted && module.invalid }" required>
+                      <option value="Y">YES</option>
+                      <option value="N">NO</option>
+                    </select>
+                    <div *ngIf="p.submitted && module.invalid" class="invalid-feedback">
+                      <div *ngIf="module.errors.required">Please Select The module option</div>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="form-group col-4">
+                  <div class="form-group">
+                    <label for="scholarship">Scholarship</label>
+                    <input type="text" class="form-control" name="scholarship"
+                      [(ngModel)]="updateAdmissionDto.scholarship" />
+
+                  </div>
+                </div>
+
               </div>
 
 
-            </div>
+              <div class="form-row">
+                <div class="form-group col-12">
+                  <div class="form-group">
+                    <label for="installments">Installments</label>
+                    <input type="text" class="form-control" name="installments"
+                      [(ngModel)]="updateAdmissionDto.installments" />
 
-            <div class="form-group text-center">
-              <button class=" btn-primary btn-lg" (click)="p.form.valid && updateAdmission()">Update</button>
-              <button class="btn btn-danger" (click)="deleteAdmission(updateAdmissionDto.rollNo)">Delete</button>
-            </div>
-          </form>
+                  </div>
+                </div>
 
+
+              </div>
+
+              <div class="form-group text-center">
+                <button class=" btn-primary btn-lg" (click)="p.form.valid && updateAdmission()">Update</button>
+                <button class="btn btn-danger" (click)="deleteAdmission(updateAdmissionDto.rollNo)">Delete</button>
+              </div>
+            </form>
+
+          </div>
         </div>
       </div>
     </div>
-  </div>
