@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-//import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 //import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-mat-confirm-dialog',
@@ -18,12 +18,14 @@ export class MatConfirmDialogComponent implements OnInit {
     this.dialogRef.close(false);
   }
 */
+/*
 constructor() { }
 
   ngOnInit() {
   }
+*/
 
-/*
+
 @Input() title: string;
   @Input() message: string;
   @Input() btnOkText: string;
@@ -45,6 +47,6 @@ constructor() { }
   public dismiss() {
     this.activeModal.dismiss();
   }
-*/
+
 
 }

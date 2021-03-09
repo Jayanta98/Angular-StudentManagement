@@ -1,5 +1,6 @@
+import { AdmissionDto } from './../../models/admission';
+import { DialogService } from './../../services/dialog.service';
 import { Component, OnInit } from '@angular/core';
-import { AdmissionDto } from 'src/app/models/admission';
 import { StudentRegister } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { AdmissionService } from 'src/app/services/admission.service';
@@ -12,9 +13,9 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class AdmissionComponent implements OnInit {
 
-  constructor(private studentService: StudentService, 
+  constructor(private studentService: StudentService,
     private admissionService: AdmissionService,
-    private accountService: AccountService) { }
+    private dialogService: DialogService) { }
 
   ngOnInit(): void {
   }
@@ -50,14 +51,20 @@ export class AdmissionComponent implements OnInit {
 
   onSubmit() {
     alert(JSON.stringify(this.studentModel))
-    this.studentService.updateStudent(this.studentModel).subscribe(data => {
-      if (data.statusCode === "SUCCESS") {
-        alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
-      }
-      else {
-        alert(data.statusMessage)
-      }
-    })
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.studentService.updateStudent(this.studentModel).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+            }
+            else {
+              alert(data.statusMessage)
+            }
+          })
+
+        }
+      });
 
   }
 
@@ -83,14 +90,73 @@ export class AdmissionComponent implements OnInit {
 
   onAdmissionSubmit() {
     alert("admission called" + JSON.stringify(this.admissionDto));
-    this.admissionService.admission(this.admissionDto).subscribe(data => {
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.admissionService.admission(this.admissionDto).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert("Roll No of Student : " + data.rollNo)
+            }
+            else {
+              alert(data.statusMessage)
+            }
+          })
+
+        }
+      });
+
+  }
+  
+  deleteAdmission(delRollNo: number) {
+    alert("Admission Deletion " + delRollNo)
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.admissionService.deleteAdmission(delRollNo).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert("Deletion Succesful")
+            }
+            else {
+              alert("Deletion Failed")
+            }
+          })
+
+        }
+      });
+
+  }
+
+  updateAdmission(updateAdmissionDto: AdmissionDto){
+    alert("Confirm Admission Update for "+ updateAdmissionDto.rollNo)
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.admissionService.updateAdmission(updateAdmissionDto).subscribe(data =>{
+            if(data.statusCode === "SUCCESS"){
+              alert("Update Success for student with roll number : "+data.rollNo)
+            }
+            else {
+              alert("Updation Failed")
+            }
+          })
+        }
+      });
+    
+  }
+
+  studentRollNo: number
+  getStudentByRollNo(){
+    this.studentService.getStudentByRollNo(this.studentRollNo).subscribe(data =>{
       if (data.statusCode === "SUCCESS") {
-        alert("Roll No of Student : "+data.rollNo)
+        this.studentModel = data.student
+        alert(JSON.stringify(data.student))
       }
       else {
         alert(data.statusMessage)
       }
     })
   }
+
+
 
 }

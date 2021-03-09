@@ -48,4 +48,9 @@ export class StudentService {
     let url = "http://localhost:9090/get-student?referenceNo=" + referenceNo;
     return this.http.get<StudentDto>(url);
   }
+
+  getStudentByRollNo(rollNo: number): Observable<StudentDto>{
+    let url = "http://localhost:9090/get-student-with-rollNo?rollNo=" + rollNo;
+    return this.http.get<StudentDto>(url);
+  }
 }

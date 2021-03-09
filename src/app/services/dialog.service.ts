@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 //import { MatDialog } from '@angular/material/dialog';
 //"node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -9,7 +9,7 @@ import { MatConfirmDialogComponent } from '../mat-confirm-dialog/mat-confirm-dia
 })
 export class DialogService {
 
-  constructor(/*private dialog: MatDialog,private modalService: NgbModal*/) { }
+  constructor(/*private dialog: MatDialog,*/private modalService: NgbModal) { }
 
   openConfirmDialog(msg){
   /* return this.dialog.open(MatConfirmDialogComponent,{
@@ -23,7 +23,7 @@ export class DialogService {
     });*/
   }
 
-  /*public confirm(
+  public confirm(
     title: string,
     message: string,
     btnOkText: string = 'OK',
@@ -36,5 +36,5 @@ export class DialogService {
     modalRef.componentInstance.btnCancelText = btnCancelText;
 
     return modalRef.result;
-  }*/
+  }
 }

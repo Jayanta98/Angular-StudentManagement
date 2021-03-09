@@ -28,4 +28,5 @@ export class AdmissionService {
     let url="http://localhost:9090/get-admission?rollNo="+rollNo;
     return this.http.get<AdmissionDtoStatus>(url);
   }
+
 }

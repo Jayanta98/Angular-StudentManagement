@@ -25,7 +25,7 @@ export class ReceptionComponent implements OnInit {
   employeeId: number;
   onSubmit() {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
-   /* this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
     .then((confirmed) => {
       if(confirmed){
         this.studentService.register(this.studentModel).subscribe(data =>{
@@ -40,7 +40,7 @@ export class ReceptionComponent implements OnInit {
           }
         })
       }
-    });*/
+    });
   }
 /*
 
