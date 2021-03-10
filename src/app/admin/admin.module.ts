@@ -13,6 +13,8 @@ import { AccountComponent } from './account/account.component';
 import { FormsModule } from '@angular/forms';
 import { AgGridModule } from 'ag-grid-angular';
 import { AdmissionComponent } from './admission/admission.component';
+import { CustombuttonComponent } from './custombutton/custombutton.component';
+import { ProfilesectionComponent } from './profilesection/profilesection.component';
 
 
 
@@ -24,6 +26,8 @@ import { AdmissionComponent } from './admission/admission.component';
     ExamcellComponent,
     AccountComponent,
     AdmissionComponent,
+    CustombuttonComponent,
+    ProfilesectionComponent,
 
 
   ],
@@ -35,7 +39,8 @@ import { AdmissionComponent } from './admission/admission.component';
     RouterModule,
 
 
-    AgGridModule.withComponents(null),
+    AgGridModule.withComponents(CustombuttonComponent),
   ]
+
 })
 export class AdminModule { }

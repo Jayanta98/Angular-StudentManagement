@@ -108,6 +108,7 @@ export class AdmissionComponent implements OnInit {
         if (data.statusCode === "SUCCESS") {
           this.studentModel = data.student
           this.dialogService.notify("Student Details", JSON.stringify(data.student))
+
         }
         else {
           this.dialogService.notify("Student Fetch Failed", data.statusMessage)
@@ -205,10 +206,10 @@ export class AdmissionComponent implements OnInit {
   }
   onSubmit() {
     alert(JSON.stringify(this.studentModel))
-    
+
     let formData: FormData = new FormData();
-    formData.append('image',this.image);
-    formData.append('referenceNo',this.studentModel.referenceNo.toString());
+    formData.append('image', this.image);
+    formData.append('referenceNo', this.studentModel.referenceNo.toString());
     this.studentService.updateStudent(this.studentModel).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
@@ -225,7 +226,7 @@ export class AdmissionComponent implements OnInit {
         alert(data.statusMessage)
       }
     })
-    
+
     /*this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
         if (confirmed) {
