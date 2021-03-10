@@ -18,6 +18,9 @@ export class StudentService {
   updateStudent(student: StudentRegister): Observable<RegistrationStatus> {
     return this.http.post<any>('http://localhost:9090/update-student', student);
   }
+  updateStudentPic(formData: FormData): Observable<RegistrationStatus> {
+    return this.http.post<any>('http://localhost:9090/update-student-pic',formData);
+  }
 
   fetchStudents(): Observable<StudentListDto> {
     let url = "http://localhost:9090/student-list";

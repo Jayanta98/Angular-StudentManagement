@@ -187,11 +187,8 @@
                 <div class="form-group col-4">
                   <div class="form-group">
                     <label for="picture">Upload Picture</label>
-                    <input type="file" class="form-control" name="fatherName" [(ngModel)]="studentModel.picture"
-                      #picture="ngModel" [ngClass]="{ 'is-invalid': f.submitted && picture.invalid }" required />
-                    <div *ngIf="f.submitted && picture.invalid" class="invalid-feedback">
-                      <div *ngIf="picture.errors.required">Picture is required</div>
-                    </div>
+                    <input type="file" class="form-control" name="picture" 
+                        (change)="onFileSelected($event)" required />
                   </div>
                 </div>
 
