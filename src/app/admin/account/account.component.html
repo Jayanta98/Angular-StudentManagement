@@ -31,7 +31,7 @@
               <div class="form-group col-6">
                 <div class="form-group">
                   <label for="rollNo">Student Roll Number</label>
-                  <input type="text" class="form-control" name="rollNo" [(ngModel)]="accountDto.rollNo"
+                  <input type="number" class="form-control" name="rollNo" [(ngModel)]="accountDto.rollNo"
                     #rollNo="ngModel" [ngClass]="{ 'is-invalid': t.submitted && rollNo.invalid }" required />
                   <div *ngIf="t.submitted && rollNo.invalid" class="invalid-feedback">
                     <div *ngIf="rollNo.errors.required">Roll Number is required</div>
@@ -41,7 +41,7 @@
               <div class="form-group col-6">
                 <div class="form-group">
                   <label for="amount">Amount</label>
-                  <input type="text" class="form-control" name="amount" [(ngModel)]="accountDto.amount"
+                  <input type="number" class="form-control" name="amount" [(ngModel)]="accountDto.amount"
                     #amount="ngModel" [ngClass]="{ 'is-invalid': t.submitted && amount.invalid }" required />
                   <div *ngIf="t.submitted && amount.invalid" class="invalid-feedback">
                     <div *ngIf="amount.errors.required">Amount is required</div>
@@ -81,7 +81,7 @@
     <div class="card-body">
       <div class="container text-center mb-5 p-3">
         <h4>Enter The Student Roll Number</h4>
-        <input type="text" [(ngModel)]="rollNoforPayment" name="rollNo" class="form-control-border">
+        <input type="number" [(ngModel)]="rollNoforPayment" name="rollNo" class="form-control-border">
         <button class=" btn-primary " (click)="paymentListRollNo()">Search</button>
 
       </div>

@@ -287,7 +287,7 @@ export class AdmissionComponent implements OnInit {
 
 
   getRollNo: number
-  updateAdmissionDto: AdmissionDto
+  updateAdmissionDto: AdmissionDto = new AdmissionDto()
   getAdmission() {
     this.admissionService.getAdmission(this.getRollNo).subscribe(data => {
       if (data.statusCode === "SUCCESS") {

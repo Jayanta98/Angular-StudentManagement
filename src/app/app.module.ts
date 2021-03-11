@@ -1,3 +1,4 @@
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 import { MaterialModule } from './material/material.module';
 import { RouterModule ,Router} from '@angular/router';
@@ -17,7 +18,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationComponent } from './notification/notification.component';
 import { DialogService } from './services/dialog.service';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [

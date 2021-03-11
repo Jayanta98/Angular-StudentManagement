@@ -647,7 +647,7 @@
 <div class="container text-center">
 
   <h4>Enter The Student Reference Number</h4>
-  <input type="text" [(ngModel)]="refForAdmission" name="refForAdmission">
+  <input type="number" [(ngModel)]="refForAdmission" name="refForAdmission">
 
   <button class=" btn-primary " (click)="refAdmissionSubmit()">Go For Admission</button>
 
@@ -728,7 +728,7 @@
                   <input type="text" class="form-control" name="batch" [(ngModel)]="admissionDto.batch" #batch="ngModel"
                     [ngClass]="{ 'is-invalid': j.submitted && batch.invalid }" required />
                   <div *ngIf="j.submitted && batch.invalid" class="invalid-feedback">
-                    <div *ngIf="batch.errors.required">Batch No is required</div>
+                    <div *ngIf="batch.errors.required">Batch is required</div>
                   </div>
                 </div>
               </div>
@@ -744,7 +744,7 @@
                     <option value="13">Target</option>
                   </select>
                   <div *ngIf="j.submitted && classs.invalid" class="invalid-feedback">
-                    <div *ngIf="classs.errors.required">Class is required</div>
+                    <div *ngIf="classs.errors.required">Please Select Class</div>
                   </div>
                 </div>
               </div>
@@ -752,10 +752,13 @@
               <div class="form-group col-4">
                 <div class="form-group">
                   <label for="idCard">ID Card</label>
-                  <input type="text" class="form-control" name="idCard" [(ngModel)]="admissionDto.idCard"
-                    #idCard="ngModel" [ngClass]="{ 'is-invalid': j.submitted && idCard.invalid }" required />
+                  <select type="text" class="form-control" name="idCard" [(ngModel)]="admissionDto.idCard"
+                    #idCard="ngModel" [ngClass]="{ 'is-invalid': j.submitted && idCard.invalid }" required >
+                    <option value="Y">YES</option>
+                    <option value="N">NO</option>
+                  </select>
                   <div *ngIf="j.submitted && idCard.invalid" class="invalid-feedback">
-                    <div *ngIf="idCard.errors.required">Father Name is required</div>
+                    <div *ngIf="idCard.errors.required">Please select ID card</div>
                   </div>
                 </div>
               </div>

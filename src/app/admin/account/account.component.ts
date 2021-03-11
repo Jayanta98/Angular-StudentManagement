@@ -41,7 +41,8 @@ export class AccountComponent implements OnInit {
             else {
               alert(data.statusMessage)
             }
-          })
+          },
+          error => console.log('oops', error))
         }
       });
 
