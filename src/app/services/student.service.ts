@@ -27,20 +27,10 @@ export class StudentService {
     return this.http.get<StudentListDto>(url);
   }
 
-  /* fetchClass11Count():Observable<StudentsCount>{
-     let url="http://localhost:9090/class-11-count";
+  fetchClassCount(classs: string):Observable<StudentsCount>{
+     let url="http://localhost:9090/class-count?classs="+classs;
      return this.http.get<StudentsCount>(url);
    }
- 
-   fetchClass12Count():Observable<StudentsCount>{
-     let url="http://localhost:9090/class-12-count";
-     return this.http.get<StudentsCount>(url);
-   }
- 
-   fetchClassTargetCount():Observable<StudentsCount>{
-     let url="http://localhost:9090/class-Target-count";
-     return this.http.get<StudentsCount>(url);
-   }*/
 
   fetchCount(): Observable<StudentsCount> {
     let url = "http://localhost:9090/student-count";

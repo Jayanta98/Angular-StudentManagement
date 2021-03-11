@@ -255,7 +255,9 @@ export class AdmissionComponent implements OnInit {
     alert("admission called" + JSON.stringify(this.admissionDto));
     this.studentService.fetchStudent(this.refForAdmission).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        this.studentModel = data.student
+        this.studentAdmission = data.student
+        this.admissionDto.name = this.studentAdmission.name
+        this.admissionDto.referenceNo = this.studentAdmission.referenceNo
         alert(JSON.stringify(data.student))
       }
       else {
@@ -308,11 +310,11 @@ export class AdmissionComponent implements OnInit {
   getAdmission() {
     this.admissionService.getAdmission(this.getRollNo).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        alert("Fetch Success")
+        alert("Fetch Success"+JSON.stringify(data.admissionDto))
         this.updateAdmissionDto = data.admissionDto
       }
       else {
-        alert("Updation Failed")
+        alert("Fetch Failed")
       }
     })
   }

@@ -21,21 +21,21 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllStudents();
-    /* this.studentService.fetchClass11Count().subscribe(response =>{
+     this.studentService.fetchClassCount("11").subscribe(response =>{
        if (response.statusCode === "SUCCESS") {
          this.class11Count = response.studentsCount;
        }
      })
-     this.studentService.fetchClass12Count().subscribe(response =>{
+     this.studentService.fetchClassCount("12").subscribe(response =>{
        if (response.statusCode === "SUCCESS") {
          this.class12Count = response.studentsCount;
        }
      })
-     this.studentService.fetchClassTargetCount().subscribe(response =>{
+     this.studentService.fetchClassCount("13").subscribe(response =>{
        if (response.statusCode === "SUCCESS") {
          this.classTargetCount = response.studentsCount;
        }
-     })*/
+     })
     this.studentService.fetchCount().subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.studentsCount = response.studentsCount;

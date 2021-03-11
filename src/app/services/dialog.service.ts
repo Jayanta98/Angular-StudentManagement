@@ -10,7 +10,7 @@ import { MatConfirmDialogComponent } from '../mat-confirm-dialog/mat-confirm-dia
 })
 export class DialogService {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(/*private dialog: MatDialog,*/private modalService: NgbModal) { }
 
   openConfirmDialog(msg){
     /* return this.dialog.open(MatConfirmDialogComponent,{
@@ -53,5 +53,3 @@ export class DialogService {
     }
   
   }
-  
-

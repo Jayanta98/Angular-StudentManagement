@@ -1,3 +1,4 @@
+
 import { MaterialModule } from './material/material.module';
 import { RouterModule ,Router} from '@angular/router';
 import { AuthgardGuard } from './authgard.guard';
@@ -14,6 +15,7 @@ import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationComponent } from './notification/notification.component';
+import { DialogService } from './services/dialog.service';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -38,7 +40,7 @@ import { NotificationComponent } from './notification/notification.component';
    // NgbModule
 
   ],
-  providers: [AuthgardGuard],
+  providers: [AuthgardGuard, DialogService],
   bootstrap: [AppComponent],
   entryComponents:[MatConfirmDialogComponent]
 })
