@@ -20,9 +20,7 @@ export class AdmissionComponent implements OnInit {
     private dialogService: DialogService) { }
   ngOnInit(): void {
   }
-
-
-  imageSrc;
+  /*imageSrc;
   sellersPermitFile: any;
   //base64s
   imageBase64String: string;
@@ -40,7 +38,7 @@ export class AdmissionComponent implements OnInit {
 
   handleInputChange(files) {
     var file = files;
-    var pattern = /image-*/;
+    var pattern = /image-/;
     var reader = new FileReader();
     if (!file.type.match(pattern)) {
       alert('invalid format');
@@ -67,7 +65,7 @@ export class AdmissionComponent implements OnInit {
     // for debug
     console.log(this.imageBase64String);
   }
-
+*/
 
 
 
@@ -128,7 +126,7 @@ export class AdmissionComponent implements OnInit {
     }
 
   }
-
+/*
   createImageFromBlob(image: Blob) {
     let reader = new FileReader();
     reader.addEventListener("load", () => {
@@ -157,6 +155,7 @@ export class AdmissionComponent implements OnInit {
     console.log("blobb")
     return blob;
   }
+  */
   message: string
 
   onFileSelected(event) {
