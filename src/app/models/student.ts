@@ -7,7 +7,7 @@ export class StudentRegister {
   public motherName: string;
 
   public domicileState: string;
-  public picture: [];
+  public picture: any;
   public aadhaarNo: string;
 
   public dateOfBirth: Date;

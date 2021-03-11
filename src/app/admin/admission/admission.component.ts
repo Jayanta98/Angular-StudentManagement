@@ -13,6 +13,8 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class AdmissionComponent implements OnInit {
   fileBlob: any;
+  imagePath: any;
+  url: string | ArrayBuffer;
   constructor(private studentService: StudentService,
     private admissionService: AdmissionService,
     private dialogService: DialogService) { }
@@ -75,7 +77,8 @@ export class AdmissionComponent implements OnInit {
   percentageScholarship: number;
   actualCourseFees: number;
   imageBlobUrl: string | ArrayBuffer
-
+  image: File;
+  showImage: any;
   offfer: number;
   finalFessPay: number;
   scholarshipFeesCal() {
@@ -93,7 +96,15 @@ export class AdmissionComponent implements OnInit {
       this.studentService.fetchStudent(this.refRollNo).subscribe(data => {
         if (data.statusCode === "SUCCESS") {
           this.studentModel = data.student
+          this.url = 'data:image/jpeg;base64,' + this.studentModel.picture
+          /*this.showImage = data.image
           //this.createImageFromBlob(this.studentModel.picture)
+          const reader = new FileReader();
+          this.imagePath = this.showImage;
+          reader.readAsDataURL(this.showImage);
+          reader.onload = (_event) => {
+            this.url = reader.result;
+          }*/
           alert(JSON.stringify(data.student))
         }
         else {
@@ -146,55 +157,26 @@ export class AdmissionComponent implements OnInit {
     console.log("blobb")
     return blob;
   }
-  image: File;
+  message: string
+
   onFileSelected(event) {
     this.image = event.target.files[0]
-    //this.studentModel.picture = event.target.files[0]
-    /*let reader = new FileReader();
-    let me = this
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = function () {
-      //me.imageBlobUrl= reader.result.toString().split(',')[1];
-      me.imageBlobUrl= reader.result
-    };
-    reader.onerror = function (error) {
-      console.log('Error: ', error);
-    };
-    console.log(me.imageBlobUrl)
-    this.studentModel.picture = this.dataURItoBlob(me.imageBlobUrl)
-    alert(this.studentModel.picture)*/
-    /*this.handleInputChange(event.target.files[0]);
-    const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
-      const byteCharacters = atob(b64Data);
-      const byteArrays = [];
+    const files = event.target.files;
+    if (files.length === 0)
+      return;
 
-      for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        const slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        const byteNumbers = new Array(slice.length);
-        for (let i = 0; i < slice.length; i++) {
-          byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        const byteArray = new Uint8Array(byteNumbers);
-        byteArrays.push(byteArray);
-      }
-
-      const blob = new Blob(byteArrays, { type: contentType });
-      return blob;
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
     }
-    console.log(this.studentModel.picture)
-    if (event.target.value) {
-      const file = event.target.files[0];
-      const type = file.type;
-      this.fileBlob = b64toBlob(this.imageBase64String);
-      console.log(this.fileBlob)
-      this.changeFile(file).then((base64: string): any => {
-        console.log(base64);
-        this.fileBlob = b64toBlob([base64], type);
-        console.log(this.fileBlob)
-      });
-    } else alert('Nothing')*/
+
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.url = reader.result;
+    }
   }
   changeFile(file) {
     return new Promise((resolve, reject) => {
@@ -310,7 +292,7 @@ export class AdmissionComponent implements OnInit {
   getAdmission() {
     this.admissionService.getAdmission(this.getRollNo).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        alert("Fetch Success"+JSON.stringify(data.admissionDto))
+        alert("Fetch Success" + JSON.stringify(data.admissionDto))
         this.updateAdmissionDto = data.admissionDto
       }
       else {
@@ -353,3 +335,51 @@ export class AdmissionComponent implements OnInit {
 
 
 }
+
+    //this.studentModel.picture = event.target.files[0]
+/* Image Trials
+let reader = new FileReader();
+let me = this
+reader.readAsDataURL(event.target.files[0]);
+reader.onload = function () {
+  //me.imageBlobUrl= reader.result.toString().split(',')[1];
+  me.imageBlobUrl= reader.result
+};
+reader.onerror = function (error) {
+  console.log('Error: ', error);
+};
+console.log(me.imageBlobUrl)
+this.studentModel.picture = this.dataURItoBlob(me.imageBlobUrl)
+alert(this.studentModel.picture)*/
+/*this.handleInputChange(event.target.files[0]);
+const b64toBlob = (b64Data, contentType = '', sliceSize = 512) => {
+  const byteCharacters = atob(b64Data);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  const blob = new Blob(byteArrays, { type: contentType });
+  return blob;
+}
+console.log(this.studentModel.picture)
+if (event.target.value) {
+  const file = event.target.files[0];
+  const type = file.type;
+  this.fileBlob = b64toBlob(this.imageBase64String);
+  console.log(this.fileBlob)
+  this.changeFile(file).then((base64: string): any => {
+    console.log(base64);
+    this.fileBlob = b64toBlob([base64], type);
+    console.log(this.fileBlob)
+  });
+} else alert('Nothing')*/
