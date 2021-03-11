@@ -565,8 +565,8 @@
                     <label for="demoCard">Select Demo Card</label>
                     <select type="text" name="demoCard" class="form-control" [(ngModel)]="studentModel.demoCard"
                       #demoCard="ngModel" [ngClass]="{ 'is-invalid': f.submitted && demoCard.invalid }" required>
-                      <option value="YES">YES</option>
-                      <option value="NO">NO</option>
+                      <option value="Y">YES</option>
+                      <option value="N">NO</option>
                     </select>
                     <div *ngIf="f.submitted && demoCard.invalid" class="invalid-feedback">
                       <div *ngIf="demoCard.errors.required">Please Select The DemoCard option</div>

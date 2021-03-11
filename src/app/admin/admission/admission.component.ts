@@ -116,11 +116,9 @@ export class AdmissionComponent implements OnInit {
       this.studentService.getStudentByRollNo(this.refRollNo).subscribe(data => {
         if (data.statusCode === "SUCCESS") {
           this.studentModel = data.student
-          this.dialogService.notify("Student Details", JSON.stringify(data.student))
-
         }
         else {
-          this.dialogService.notify("Student Fetch Failed", data.statusMessage)
+          //this.dialogService.notify("Student Fetch Failed", data.statusMessage)
         }
       })
     }
@@ -199,14 +197,17 @@ export class AdmissionComponent implements OnInit {
         alert(data.statusMessage)
       }
     })
-    this.studentService.updateStudentPic(formData).subscribe(data => {
-      if (data.statusCode === "SUCCESS") {
-        alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
-      }
-      else {
-        alert(data.statusMessage)
-      }
-    })
+    if(this.image != null){
+      this.studentService.updateStudentPic(formData).subscribe(data => {
+        if (data.statusCode === "SUCCESS") {
+          alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+        }
+        else {
+          alert(data.statusMessage)
+        }
+      })
+    }
+    
 
     /*this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
