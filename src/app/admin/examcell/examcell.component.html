@@ -8,7 +8,61 @@
   </div>
 </div>
 
-<div class="card m-4">
+
+<div>
+  <h3 class="text-center"> Generate Demo ID Card for the Student</h3>
+
+  <div class="container text-center">
+
+    <h5>Enter The Student Reference Number</h5>
+    <input type="number" [(ngModel)]="refForDemoCard" name="refForDemoCard">
+
+    <button class=" btn-primary " (click)="refFORDemoCardSubmit()">Demo Card</button>
+
+  </div>
+
+</div>
+
+<!--card demo-->
+<div class="container bg-gradient-blue m-5 p-4" *ngIf="showDemoCard">
+  <div class="container justify-content-center align-content-center d-flex">
+    <div>
+
+      <div class="myfont">
+
+        <div class="mytop">
+
+          <img src="../../../assets/adminAssets/images/aayaam logo png.png">
+        </div>
+        <div class="mybuttom">
+          <p>Name - {{studentModel.name}}</p>
+
+          <p>Father’s Name - {{studentModel.fatherName}}</p>
+
+
+
+          <p>Contact - {{studentModel.mobileNoStudent}}</p>
+
+          <p>Reference Id - {{studentModel.referenceNo}}</p>
+
+        </div>
+
+        <div class="mybuttom2">
+          <p>Demo Card</p>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="card m-4 p-3">
   <h2 class="card-header text-center text-success">Upload The Marks </h2>
   <div class="card-body">
     <form name="form" (ngSubmit)="f.form.valid && onMarksSubmit()" #f="ngForm" novalidate>
@@ -18,7 +72,7 @@
       </div>
 
       <div class="text-center">
-        <button class="btn btn-primary mr-1">Upload</button>
+        <button class="btn btn-primary m-2 p-2">Upload</button>
       </div>
     </form>
   </div>

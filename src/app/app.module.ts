@@ -1,7 +1,7 @@
 import { AdminRoutingModule } from './admin/admin-routing.module';
 
 import { MaterialModule } from './material/material.module';
-import { RouterModule ,Router} from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthgardGuard } from './authgard.guard';
 import { LandingModule } from './landing/landing.module';
 import { AdminModule } from './admin/admin.module';
@@ -36,12 +36,12 @@ import { DialogService } from './services/dialog.service';
     BrowserAnimationsModule,
     MaterialModule,
     NgbModule,
-    
-   // NgbModule
+
+    // NgbModule
 
   ],
   providers: [AuthgardGuard, DialogService],
   bootstrap: [AppComponent],
-  entryComponents:[MatConfirmDialogComponent]
+  entryComponents: [MatConfirmDialogComponent]
 })
 export class AppModule { }

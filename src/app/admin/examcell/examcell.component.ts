@@ -2,6 +2,8 @@ import { ExamcellService } from './../../services/examcell.service';
 import { Result, ResultsDto } from './../../models/examcell';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StudentService } from 'src/app/services/student.service';
+import { StudentRegister } from 'src/app/models/student';
 
 @Component({
   selector: 'app-examcell',
@@ -11,7 +13,8 @@ import { Router } from '@angular/router';
 export class ExamcellComponent implements OnInit {
 
   resultDto: ResultsDto = new ResultsDto()
-  constructor(private router: Router, private examCellService: ExamcellService) { }
+  constructor(private router: Router, private examCellService: ExamcellService,
+    private studentService: StudentService) { }
 
   ngOnInit(): void {
   }
@@ -80,7 +83,7 @@ export class ExamcellComponent implements OnInit {
       if (data.statusCode === "SUCCESS") {
         this.resultList = data.resultsList
         alert(JSON.stringify(this.resultList));
-        this.isShow=true;
+        this.isShow = true;
 
       }
       else {
@@ -98,6 +101,28 @@ export class ExamcellComponent implements OnInit {
   BatchName: any;
   trackMarksByBatchName() {
     alert(this.BatchName)
+
+  }
+
+
+  refForDemoCard: number;
+  showDemoCard=false;
+  studentModel: StudentRegister = new StudentRegister();
+  refFORDemoCardSubmit() {
+
+
+    this.studentService.fetchStudent(this.refForDemoCard).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        this.studentModel = data.student;
+        console.log(data.student);
+        alert("Student Details" + JSON.stringify(data.student))
+        this.showDemoCard=true;
+      }
+      else {
+
+        alert("Student Details Failed" + JSON.stringify(data.statusMessage))
+      }
+    })
 
   }
 

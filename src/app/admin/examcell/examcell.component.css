@@ -1,0 +1,67 @@
+*{
+    margin: 00px;
+    padding: 00px;
+    box-sizing: content-box;
+
+}
+
+
+.myfont{
+    height: 250px;
+    width: 375px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.mytop{
+    height: 30%;
+    width: 100%;
+    background-color: #F5DB9E;
+    position: relative;
+    z-index: 5;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.mybuttom{
+    height: 70%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.mytop img{
+    height: 40px;
+    width: 180px;
+    position: absolute;
+    top:18px;
+    left: 90px;
+}
+.mybuttom p{
+    position: relative;
+    top: 8px;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 50px;
+    padding-top: 10px;
+
+}
+
+.mybuttom2 p{
+    position: relative;
+    top: 140px;
+    text-align: right;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 12px;
+    padding-right: 10px;
+    padding-top: 15px;
+    color: grey;
+
+}
+
+
