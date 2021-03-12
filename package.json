@@ -26,6 +26,7 @@
     "bootstrap": "^4.5.0",
     "csvtojson": "^2.0.10",
     "rxjs": "~6.5.5",
+    "sweetalert2": "^10.15.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
