@@ -9,8 +9,8 @@
 </div>
 
 
-<div>
-  <h3 class="text-center"> Generate Demo ID Card for the Student</h3>
+<div class="container p-3 m-3">
+  <h3 class="text-center"> Generate Demo-ID Card for the Student</h3>
 
   <div class="container text-center">
 
@@ -23,8 +23,9 @@
 
 </div>
 
+
 <!--card demo-->
-<div class="container bg-gradient-blue m-5 p-4" *ngIf="showDemoCard">
+<div class="container bg-gradient-blue m-5 p-4" id="democardDiv" *ngIf="showDemoCard">
   <div class="container justify-content-center align-content-center d-flex">
     <div>
 
@@ -56,7 +57,33 @@
       </div>
     </div>
   </div>
+
+  <div class="text-center m-3 p-3">
+    <button class=" btn-warning btn-lg" id="printPageButton" onClick="window.print()">Print</button>
+  </div>
 </div>
+
+
+
+
+
+
+
+<div class="container p-3 m-3">
+  <hr>
+  <h3 class="text-center"> Generate ID Card for the Student</h3>
+
+  <div class="container text-center">
+
+    <h5>Enter The Student Roll Number</h5>
+    <input type="number" [(ngModel)]="idRollNo" name="idRollNo">
+
+    <button class=" btn-primary " (click)="generateId()">ID Card</button>
+
+  </div>
+
+</div>
+
 
 
 

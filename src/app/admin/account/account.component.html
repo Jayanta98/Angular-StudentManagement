@@ -51,6 +51,31 @@
 
             </div>
 
+            <div class="form-row">
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="paymentMethod">Payment Method</label>
+                  <input type="text" class="form-control" name="paymentMethod" [(ngModel)]="accountDto.paymentMethod"
+                    #paymentMethod="ngModel" [ngClass]="{ 'is-invalid': t.submitted && paymentMethod.invalid }"
+                    required />
+                  <div *ngIf="t.submitted && paymentMethod.invalid" class="invalid-feedback">
+                    <div *ngIf="paymentMethod.errors.required">Payment Method is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-6">
+                <div class="form-group">
+                  <label for="remarks">Remarks</label>
+                  <input type="text" class="form-control" name="remarks" [(ngModel)]="accountDto.remarks"
+                    #remarks="ngModel" [ngClass]="{ 'is-invalid': t.submitted && remarks.invalid }" required />
+                  <div *ngIf="t.submitted && remarks.invalid" class="invalid-feedback">
+                    <div *ngIf="remarks.errors.required">Remarks required</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
 
             <div class="form-group text-center">
               <button class=" btn-primary btn-lg">Save</button>

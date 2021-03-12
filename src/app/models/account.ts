@@ -9,8 +9,9 @@ export class AccountDto{
     public paymentMethod: string;
     public address: string;
     public class: string;
-    public batch: string
-    public academicYear: string
+    public batch: string;
+    public academicYear: string;
+    public remarks:string;
 }
 
 export class AccountDtoStatus extends Status{
