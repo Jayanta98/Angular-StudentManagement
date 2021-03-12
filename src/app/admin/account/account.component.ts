@@ -44,7 +44,7 @@ export class AccountComponent implements OnInit {
           'Your imaginary file has been deleted.',
           'success'
         )*/
-        /*
+
         this.accountService.addTransaction(this.accountDto).subscribe(data => {
           if (data.statusCode === "SUCCESS") {
             alert(JSON.stringify(data.accountDto))
@@ -53,22 +53,22 @@ export class AccountComponent implements OnInit {
           }
           else {
             Swal.fire(
-          'Cancelled',
-          'Payment Failed',
-          'error'
-        )
+              'Cancelled',
+              'Payment Failed',
+              'error'
+            )
           }
-        
-        */ 
-        this.router.navigateByUrl('admin/fee-receipt', { state: this.accountDto });
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Payment Cancelled',
-          'error'
-        )
-      }
-    })
+        })
+
+          //this.router.navigateByUrl('admin/fee-receipt', { state: this.accountDto });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Payment Cancelled',
+            'error'
+          )
+        }
+      })
   }
   /*this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
     .then((confirmed) => {
@@ -94,102 +94,102 @@ export class AccountComponent implements OnInit {
 
 
 
-rollNoforPayment: number;
-transactionsList: AccountDto[];
-isShow = false;
+  rollNoforPayment: number;
+  transactionsList: AccountDto[];
+  isShow = false;
 
-transactionsListHeader = [
-  { headerName: 'Transaction ID', field: 'transactionId', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-  { headerName: 'Student Roll No.', field: 'rollNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-  { headerName: 'Student Name', field: 'name', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-  { headerName: 'Amount Paid', field: 'amount', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
-  { headerName: 'Payment DateTime', field: 'dateTime', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+  transactionsListHeader = [
+    { headerName: 'Transaction ID', field: 'transactionId', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Student Roll No.', field: 'rollNo', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Student Name', field: 'name', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Amount Paid', field: 'amount', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
+    { headerName: 'Payment DateTime', field: 'dateTime', sortable: true, filter: true, minWidth: 50, resizable: true, cellStyle: { 'font-size': '14px' } },
 
 
 
-]
+  ]
 
-paymentListRollNo() {
+  paymentListRollNo() {
 
-  this.accountService.getTransactionsWithRollNo(this.rollNoforPayment).subscribe(data => {
-    if (data.statusCode === "SUCCESS") {
-      alert("Transactions Fetch Success")
-      this.transactionsList = data.accountDtos;
-      this.isShow = true;
-    }
-    else {
-      alert("Transactions Fetch Failed")
-      this.transactionsList.splice(0, this.transactionsList.length)
-    }
-  })
-}
-
-fromDate: Date
-toDate: Date
-paymentListDates() {
-  this.accountService.getTransactionsWithDates(this.fromDate, this.toDate).subscribe(data => {
-    if (data.statusCode === "SUCCESS") {
-      alert("Transactions Fetch Success")
-      this.transactionsList = data.accountDtos
-    }
-    else {
-      alert("Transactions Fetch Failed")
-      this.transactionsList.splice(0, this.transactionsList.length)
-    }
-  })
-}
-
-transactionId: number
-fetchTransaction() {
-  this.accountService.getTransaction(this.transactionId).subscribe(data => {
-    if (data.statusCode === "SUCCESS") {
-      alert("Transactions Fetch Success")
-      this.transactionsList.splice(0, this.transactionsList.length)
-      this.transactionsList.push(data.accountDto)
-    }
-    else {
-      alert("Transactions Fetch Failed")
-      this.transactionsList.splice(0, this.transactionsList.length)
-    }
-  })
-}
-
-updateAccountDto: AccountDto
-updatePayment() {
-  alert("Update payment")
-  this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-    .then((confirmed) => {
-      if (confirmed) {
-        this.accountService.updateTransaction(this.updateAccountDto).subscribe(data => {
-          if (data.statusCode === "SUCCESS") {
-            alert(JSON.stringify(data.accountDto))
-            //generate receipt with accountDto
-          }
-          else {
-            alert(data.statusMessage)
-          }
-        })
+    this.accountService.getTransactionsWithRollNo(this.rollNoforPayment).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert("Transactions Fetch Success")
+        this.transactionsList = data.accountDtos;
+        this.isShow = true;
       }
-    });
-}
-
-deletePayment(trId) {
-  alert("Delete Transaction")
-  this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
-    .then((confirmed) => {
-      if (confirmed) {
-        this.accountService.deleteTransaction(trId).subscribe(data => {
-          if (data.statusCode === "SUCCESS") {
-            alert("Deletion Success")
-            //generate receipt with accountDto
-          }
-          else {
-            alert(data.statusMessage)
-          }
-        })
+      else {
+        alert("Transactions Fetch Failed")
+        this.transactionsList.splice(0, this.transactionsList.length)
       }
-    });
-}
+    })
+  }
+
+  fromDate: Date
+  toDate: Date
+  paymentListDates() {
+    this.accountService.getTransactionsWithDates(this.fromDate, this.toDate).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert("Transactions Fetch Success")
+        this.transactionsList = data.accountDtos
+      }
+      else {
+        alert("Transactions Fetch Failed")
+        this.transactionsList.splice(0, this.transactionsList.length)
+      }
+    })
+  }
+
+  transactionId: number
+  fetchTransaction() {
+    this.accountService.getTransaction(this.transactionId).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        alert("Transactions Fetch Success")
+        this.transactionsList.splice(0, this.transactionsList.length)
+        this.transactionsList.push(data.accountDto)
+      }
+      else {
+        alert("Transactions Fetch Failed")
+        this.transactionsList.splice(0, this.transactionsList.length)
+      }
+    })
+  }
+
+  updateAccountDto: AccountDto
+  updatePayment() {
+    alert("Update payment")
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.accountService.updateTransaction(this.updateAccountDto).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert(JSON.stringify(data.accountDto))
+              //generate receipt with accountDto
+            }
+            else {
+              alert(data.statusMessage)
+            }
+          })
+        }
+      });
+  }
+
+  deletePayment(trId) {
+    alert("Delete Transaction")
+    this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
+      .then((confirmed) => {
+        if (confirmed) {
+          this.accountService.deleteTransaction(trId).subscribe(data => {
+            if (data.statusCode === "SUCCESS") {
+              alert("Deletion Success")
+              //generate receipt with accountDto
+            }
+            else {
+              alert(data.statusMessage)
+            }
+          })
+        }
+      });
+  }
 
 
 }

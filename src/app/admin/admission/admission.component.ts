@@ -5,6 +5,7 @@ import { StudentRegister } from 'src/app/models/student';
 import { AccountService } from 'src/app/services/account.service';
 import { AdmissionService } from 'src/app/services/admission.service';
 import { StudentService } from 'src/app/services/student.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admission',
@@ -106,7 +107,12 @@ export class AdmissionComponent implements OnInit {
           alert(JSON.stringify(data.student))
         }
         else {
-          alert(data.statusMessage)
+          //alert(data.statusMessage)
+          Swal.fire(
+            'Failed',
+            data.statusMessage,
+            'error'
+          )
         }
 
       })
@@ -191,10 +197,20 @@ export class AdmissionComponent implements OnInit {
     formData.append('referenceNo', this.studentModel.referenceNo.toString());
     this.studentService.updateStudent(this.studentModel).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+        //alert(data.statusCode + " Note the Reference No: " + data.referenceNo)
+        Swal.fire(
+          'Reference No: '+data.referenceNo,
+          'Note the above number for further assistance',
+          'success'
+        )
       }
       else {
-        alert(data.statusMessage)
+        //alert(data.statusMessage)
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
     if(this.image != null){
@@ -243,7 +259,11 @@ export class AdmissionComponent implements OnInit {
         alert(JSON.stringify(data.student))
       }
       else {
-        alert(data.statusMessage)
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
@@ -258,7 +278,11 @@ export class AdmissionComponent implements OnInit {
               alert("Roll No of Student : " + data.rollNo)
             }
             else {
-              alert(data.statusMessage)
+              Swal.fire(
+                'Failed',
+                data.statusMessage,
+                'error'
+              )
             }
           })
 
@@ -277,7 +301,11 @@ export class AdmissionComponent implements OnInit {
               alert("Deletion Succesful")
             }
             else {
-              alert("Deletion Failed")
+              Swal.fire(
+                'Failed',
+                data.statusMessage,
+                'error'
+              )
             }
           })
 
@@ -296,7 +324,11 @@ export class AdmissionComponent implements OnInit {
         this.updateAdmissionDto = data.admissionDto
       }
       else {
-        alert("Fetch Failed")
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
@@ -311,7 +343,11 @@ export class AdmissionComponent implements OnInit {
               alert("Update Success for student with roll number : " + data.rollNo)
             }
             else {
-              alert("Updation Failed")
+              Swal.fire(
+                'Failed',
+                data.statusMessage,
+                'error'
+              )
             }
           })
         }
@@ -327,7 +363,11 @@ export class AdmissionComponent implements OnInit {
         alert(JSON.stringify(data.student))
       }
       else {
-        alert(data.statusMessage)
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
