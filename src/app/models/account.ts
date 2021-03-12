@@ -5,6 +5,12 @@ export class AccountDto{
     public dateTime:Date;
     public rollNo: number;
     public name: string;
+    public fatherName: string;
+    public paymentMethod: string;
+    public address: string;
+    public class: string;
+    public batch: string
+    public academicYear: string
 }
 
 export class AccountDtoStatus extends Status{
