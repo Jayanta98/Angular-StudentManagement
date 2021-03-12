@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentRegister } from 'src/app/models/student';
 import { StudentService } from 'src/app/services/student.service';
 import { AdmissionDto } from 'src/app/models/admission';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -18,7 +19,9 @@ export class AccountComponent implements OnInit {
   constructor(private studentService: StudentService,
     private admissionService: AdmissionService,
     private accountService: AccountService,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -29,13 +32,14 @@ export class AccountComponent implements OnInit {
     alert("Payment");
     this.dialogService.confirm('Please confirm..', 'Do you really want to ... ?')
       .then((confirmed) => {
+        if(confirmed){
+          this.router.navigateByUrl('admin/fee-receipt', { state: this.accountDto });
+        }/*
         if (confirmed) {
           this.accountService.addTransaction(this.accountDto).subscribe(data => {
             if (data.statusCode === "SUCCESS") {
               alert(JSON.stringify(data.accountDto))
-              this.dialogService.notify("test", "Some").then((confirmed) => {
-
-              })
+              this.router.navigateByUrl('admin/fee-receipt', { state: data.accountDto });
               //generate receipt with accountDto
             }
             else {
@@ -43,7 +47,7 @@ export class AccountComponent implements OnInit {
             }
           },
           error => console.log('oops', error))
-        }
+        }*/
       });
 
 

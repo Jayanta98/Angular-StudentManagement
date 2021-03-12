@@ -15,6 +15,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { AdmissionComponent } from './admission/admission.component';
 import { CustombuttonComponent } from './custombutton/custombutton.component';
 import { ProfilesectionComponent } from './profilesection/profilesection.component';
+import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
 
 
 
@@ -28,6 +29,7 @@ import { ProfilesectionComponent } from './profilesection/profilesection.compone
     AdmissionComponent,
     CustombuttonComponent,
     ProfilesectionComponent,
+    FeeReceiptComponent,
 
 
   ],
