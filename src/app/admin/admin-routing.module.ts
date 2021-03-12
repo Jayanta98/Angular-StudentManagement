@@ -1,3 +1,4 @@
+import { IdCardComponent } from './id-card/id-card.component';
 import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
 import { ProfilesectionComponent } from './profilesection/profilesection.component';
 import { AdmissionComponent } from './admission/admission.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
       { path: "account", component: AccountComponent },
       { path: "admission", component: AdmissionComponent },
       { path: "profile", component: ProfilesectionComponent },
-      { path: "fee-receipt",component: FeeReceiptComponent}
+      { path: "fee-receipt",component: FeeReceiptComponent},
+      { path: "id-card",component: IdCardComponent}
 
     ]
 

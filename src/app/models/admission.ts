@@ -22,3 +22,15 @@ export class AdmissionStatus extends Status{
 export class AdmissionDtoStatus extends Status{
     public admissionDto: AdmissionDto
 }
+
+export class IdDto extends Status{
+    public academicYear: string
+    public batch: string
+    public classs: string
+    public name: string
+    public rollNo: number
+    public picture: any
+    public fatherName: string
+    public mobileNo: string
+    public address: string
+}

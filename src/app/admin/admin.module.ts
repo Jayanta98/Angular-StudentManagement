@@ -16,6 +16,7 @@ import { AdmissionComponent } from './admission/admission.component';
 import { CustombuttonComponent } from './custombutton/custombutton.component';
 import { ProfilesectionComponent } from './profilesection/profilesection.component';
 import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
+import { IdCardComponent } from './id-card/id-card.component';
 
 
 
@@ -30,6 +31,7 @@ import { FeeReceiptComponent } from './fee-receipt/fee-receipt.component';
     CustombuttonComponent,
     ProfilesectionComponent,
     FeeReceiptComponent,
+    IdCardComponent,
 
 
   ],

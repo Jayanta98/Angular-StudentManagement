@@ -1,9 +1,11 @@
+import { AdmissionService } from 'src/app/services/admission.service';
 import { ExamcellService } from './../../services/examcell.service';
 import { Result, ResultsDto } from './../../models/examcell';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { StudentRegister } from 'src/app/models/student';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-examcell',
@@ -14,9 +16,55 @@ export class ExamcellComponent implements OnInit {
 
   resultDto: ResultsDto = new ResultsDto()
   constructor(private router: Router, private examCellService: ExamcellService,
-    private studentService: StudentService) { }
+    private studentService: StudentService,
+    private admissionService: AdmissionService,
+    private activatedRoute: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  idRollNo: number
+  generateId(){
+    Swal.fire({
+      title: 'Id Card?',
+      text: 'Do you need to generate Id card',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Generate',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+        /*Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )*/
+
+        this.admissionService.getIdCard(this.idRollNo).subscribe(data => {
+          if (data.statusCode === "SUCCESS") {
+            //alert(JSON.stringify(data))
+            this.router.navigateByUrl('admin/id-card', { state: data });
+            //generate receipt with accountDto
+          }
+          else {
+            Swal.fire(
+              'Cancelled',
+              'Payment Failed',
+              'error'
+            )
+          }
+        })
+
+          //this.router.navigateByUrl('admin/fee-receipt', { state: this.accountDto });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Payment Cancelled',
+            'error'
+          )
+        }
+      })
   }
 
   on11thmarksCard: any;

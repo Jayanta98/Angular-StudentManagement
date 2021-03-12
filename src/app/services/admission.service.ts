@@ -1,4 +1,4 @@
-import { AdmissionDto, AdmissionStatus, AdmissionDtoStatus } from './../models/admission';
+import { AdmissionDto, AdmissionStatus, AdmissionDtoStatus, IdDto } from './../models/admission';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -27,6 +27,10 @@ export class AdmissionService {
   getAdmission(rollNo: number): Observable<AdmissionDtoStatus>{
     let url="http://localhost:9090/get-admission?rollNo="+rollNo;
     return this.http.get<AdmissionDtoStatus>(url);
+  }
+  getIdCard(rollNo: number): Observable<IdDto>{
+    let url="http://localhost:9090/id-card?rollNo="+rollNo;
+    return this.http.get<IdDto>(url);
   }
 
 }
