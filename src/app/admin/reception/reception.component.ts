@@ -25,7 +25,7 @@ export class ReceptionComponent implements OnInit {
   error: boolean;
   employeeId: number;
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
+    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.studentModel));
     Swal.fire({
       title: 'Register?',
       text: 'Do you need to complete registration',
