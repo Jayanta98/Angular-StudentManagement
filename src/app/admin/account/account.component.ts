@@ -33,7 +33,7 @@ export class AccountComponent implements OnInit {
     Swal.fire({
       title: 'Payment?',
       text: 'Do you need to complete payment',
-      icon: 'warning',
+      icon: 'question',
       showCancelButton: true,
       confirmButtonText: 'Pay',
       cancelButtonText: 'Cancel'

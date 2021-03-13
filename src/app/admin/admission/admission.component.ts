@@ -125,6 +125,11 @@ export class AdmissionComponent implements OnInit {
         }
         else {
           //this.dialogService.notify("Student Fetch Failed", data.statusMessage)
+          Swal.fire(
+            'Failed',
+            data.statusMessage,
+            'error'
+          )
         }
       })
     }

@@ -55,9 +55,11 @@
                 <div class="form-group">
                   <label for="aadhaarNo">Aadhaar No</label>
                   <input type="text" class="form-control" name="aadhaarNo" [(ngModel)]="studentModel.aadhaarNo"
-                    #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" required />
+                    #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" maxlength="12" minlength="12" required />
                   <div *ngIf="f.submitted && aadhaarNo.invalid" class="invalid-feedback">
                     <div *ngIf="aadhaarNo.errors.required">AadhaarNo is required</div>
+                    <div *ngIf="aadhaarNo.errors.minlength || aadhaarNo.errors.maxlength">Aadhaar number must be 12
+                        digit</div>
                   </div>
                 </div>
               </div>
@@ -111,9 +113,13 @@
                   <label for="mobileNoFather">Father Mobile No.</label>
                   <input type="text" class="form-control" name="mobileNoFather"
                     [(ngModel)]="studentModel.mobileNoFather" #mobileNoFather="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoFather.invalid }" required />
+                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoFather.invalid }" required minlength="10"
+                    maxlength="10" pattern="[6-9]{1}[0-9]{9}"/>
                   <div *ngIf="f.submitted && mobileNoFather.invalid" class="invalid-feedback">
                     <div *ngIf="mobileNoFather.errors.required">Father Mobile No. is required</div>
+                    <div *ngIf="mobileNoFather.errors.minlength || mobileNoFather.errors.maxlength">Mobile number must be 10
+                      digit</div>
+                    <div *ngIf="mobileNoFather.errors.pattern">Enter Valid Mobile Number</div>
                   </div>
                 </div>
               </div>
@@ -136,16 +142,20 @@
                 <label for="mobileNoStudent">Student Mobile No.</label>
                 <input type="text" class="form-control" name="mobileNoStudent"
                   [(ngModel)]="studentModel.mobileNoStudent" #mobileNoStudent="ngModel"
-                  [ngClass]="{ 'is-invalid': f.submitted && mobileNoStudent.invalid }" required />
+                  [ngClass]="{ 'is-invalid': f.submitted && mobileNoStudent.invalid }" required minlength="10"
+                  maxlength="10" pattern="[6-9]{1}[0-9]{9}" />
                 <div *ngIf="f.submitted && mobileNoStudent.invalid" class="invalid-feedback">
                   <div *ngIf="mobileNoStudent.errors.required">Student MobileNo is required</div>
+                  <div *ngIf="mobileNoStudent.errors.minlength || mobileNoStudent.errors.maxlength">Mobile number must be 10
+                    digit</div>
+                <div *ngIf="mobileNoStudent.errors.pattern">Enter Valid Mobile Number</div>
                 </div>
               </div>
 
               <div class="form-group col-6">
                 <div class="form-group">
                   <label>Enter Email</label>
-                  <input type="text" name="emailId" class="form-control" [(ngModel)]="studentModel.emailId"
+                  <input type="email" name="emailId" class="form-control" [(ngModel)]="studentModel.emailId"
                     #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
                   <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                     <div *ngIf="email.errors.required">Email is required</div>
