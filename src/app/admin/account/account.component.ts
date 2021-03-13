@@ -29,7 +29,7 @@ export class AccountComponent implements OnInit {
   accountDto: AccountDto = new AccountDto();
 
   onPaymentSubmit() {
-    alert("Payment");
+    //alert("Payment");
     Swal.fire({
       title: 'Payment?',
       text: 'Do you need to complete payment',
@@ -53,7 +53,7 @@ export class AccountComponent implements OnInit {
           }
           else {
             Swal.fire(
-              'Cancelled',
+              'Failed',
               'Payment Failed',
               'error'
             )
@@ -113,13 +113,20 @@ export class AccountComponent implements OnInit {
 
     this.accountService.getTransactionsWithRollNo(this.rollNoforPayment).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        alert("Transactions Fetch Success")
+        //alert("Transactions Fetch Success")
         this.transactionsList = data.accountDtos;
         this.isShow = true;
+
       }
       else {
-        alert("Transactions Fetch Failed")
+        //alert("Transactions Fetch Failed")
+        
         this.transactionsList.splice(0, this.transactionsList.length)
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
@@ -129,12 +136,17 @@ export class AccountComponent implements OnInit {
   paymentListDates() {
     this.accountService.getTransactionsWithDates(this.fromDate, this.toDate).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
-        alert("Transactions Fetch Success")
+        //alert("Transactions Fetch Success")
         this.transactionsList = data.accountDtos
       }
       else {
-        alert("Transactions Fetch Failed")
+        //alert("Transactions Fetch Failed")
         this.transactionsList.splice(0, this.transactionsList.length)
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }

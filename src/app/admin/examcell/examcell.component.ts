@@ -50,7 +50,7 @@ export class ExamcellComponent implements OnInit {
           else {
             Swal.fire(
               'Cancelled',
-              'Payment Failed',
+              data.statusMessage,
               'error'
             )
           }
@@ -60,7 +60,7 @@ export class ExamcellComponent implements OnInit {
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Swal.fire(
             'Cancelled',
-            'Payment Cancelled',
+            'Generation o ID Cancelled',
             'error'
           )
         }
@@ -74,15 +74,48 @@ export class ExamcellComponent implements OnInit {
   onMarksSubmit() {
     let formData: FormData = new FormData();
     formData.append('file', this.on11thmarksCard);
-    alert(JSON.stringify(formData));
-    this.examCellService.upload(formData).subscribe(data => {
-      if (data.statusCode === "SUCCESS") {
-        alert(data.statusCode)
-      }
-      else {
-        alert(data.statusMessage)
-      }
-    })
+    //alert(JSON.stringify(formData));
+    Swal.fire({
+      title: 'Upload',
+      text: 'Do you need to upload results file',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Upload',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.value) {
+        /*Swal.fire(
+          'Deleted!',
+          'Your imaginary file has been deleted.',
+          'success'
+        )*/
+
+        this.examCellService.upload(formData).subscribe(data => {
+          if (data.statusCode === "SUCCESS") {
+            Swal.fire(
+              'SUCCESS',
+              'Results uploaded successfully',
+              'success')
+          }
+          else {
+            Swal.fire(
+              'Upload Failed',
+              data.statusMessage,
+              'error'
+            )
+          }
+        })
+
+          //this.router.navigateByUrl('admin/fee-receipt', { state: this.accountDto });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Generation o ID Cancelled',
+            'error'
+          )
+        }
+      })
+    
 
 
   }
@@ -110,32 +143,40 @@ export class ExamcellComponent implements OnInit {
 
   isShow = false;
   onRollNoSubmit() {
-    alert(JSON.stringify(this.rollNo));
+    //alert(JSON.stringify(this.rollNo));
     this.examCellService.fetchByRollNo(this.rollNo).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         this.resultList = data.resultsList
-        alert(JSON.stringify(this.resultList));
+        //alert(JSON.stringify(this.resultList));
         this.isShow = true;
 
       }
       else {
-        alert(data.statusMessage)
+        Swal.fire(
+          'Results Fetch Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
 
   testCode: string
   onTestCodeSubmit() {
-    alert(JSON.stringify(this.testCode));
+    //alert(JSON.stringify(this.testCode));
     this.examCellService.fetchByTestCode(this.testCode).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         this.resultList = data.resultsList
-        alert(JSON.stringify(this.resultList));
+        //alert(JSON.stringify(this.resultList));
         this.isShow = true;
 
       }
       else {
-        alert(data.statusMessage)
+        Swal.fire(
+          'Results Fetch Failed',
+          data.statusMessage,
+          'error'
+        )
       }
     })
   }
@@ -162,13 +203,20 @@ export class ExamcellComponent implements OnInit {
     this.studentService.fetchStudent(this.refForDemoCard).subscribe(data => {
       if (data.statusCode === "SUCCESS") {
         this.studentModel = data.student;
-        console.log(data.student);
-        alert("Student Details" + JSON.stringify(data.student))
+        //console.log(data.student);
+        //alert("Student Details" + JSON.stringify(data.student))
         this.showDemoCard=true;
+
       }
       else {
 
-        alert("Student Details Failed" + JSON.stringify(data.statusMessage))
+        Swal.fire(
+          'Failed',
+          data.statusMessage,
+          'error'
+        )
+
+        //alert("Student Details Failed" + JSON.stringify(data.statusMessage))
       }
     })
 

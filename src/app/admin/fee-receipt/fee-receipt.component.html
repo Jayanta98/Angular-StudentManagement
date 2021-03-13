@@ -26,7 +26,7 @@
 
             <h6><b>Father Name :</b> {{payment.fatherName}}</h6>
 
-            <h6><b>Course :</b> {{payment.batch}}</h6>
+            <h6><b>Course :</b> NEET {{payment.classs}}-{{payment.batch}}</h6>
 
             <h6><b>Address :</b> {{payment.address}}</h6>
 
@@ -39,7 +39,7 @@
             <h6><b>Receipt Date :</b></h6>
 
             <div class="txn mt-2">
-              <h6>12 March, 2021</h6>
+              <h6>{{payment.dateTime}}</h6>
             </div>
           </div>
         </div>
@@ -94,20 +94,20 @@
           <table class="table border-0 table-hover">
             <tr>
               <td>Sub Total:</td>
-              <td><span>INR </span>2542.37</td>
+              <td><span>INR </span>{{paymentAmount}}</td>
             </tr>
             <tr>
               <td>CGST @ 9%:</td>
-              <td>228.81</td>
+              <td>{{paymentGST}}</td>
             </tr>
             <tr>
               <td>SGST @ 9%:</td>
-              <td>228.81</td>
+              <td>{{paymentGST}}</td>
             </tr>
             <tfoot>
               <tr>
                 <td>Total:</td>
-                <td><span>INR </span>3000.00</td>
+                <td><span>INR </span>{{payment.amount}}</td>
               </tr>
             </tfoot>
           </table>

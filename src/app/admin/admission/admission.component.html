@@ -188,9 +188,11 @@
                   <div class="form-group">
                     <label for="aadhaarNo">Aadhaar No</label>
                     <input type="text" class="form-control" name="aadhaarNo" [(ngModel)]="studentModel.aadhaarNo"
-                      #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" required />
+                      #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" maxlength="12" minlength="12" required />
                     <div *ngIf="f.submitted && aadhaarNo.invalid" class="invalid-feedback">
                       <div *ngIf="aadhaarNo.errors.required">AadhaarNo is required</div>
+                      <div *ngIf="aadhaarNo.errors.minlength || aadhaarNo.errors.maxlength">Aadhaar number must be 12
+                          digit</div>
                     </div>
                   </div>
                 </div>
@@ -275,9 +277,14 @@
                 <div class="form-group col-4">
                   <label for="mobileNoSms">Mobile No. For SMS</label>
                   <input type="text" class="form-control" name="mobileNoSms" [(ngModel)]="studentModel.mobileNoSms"
-                    #mobileNoSms="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mobileNoSms.invalid }" required />
+                    #mobileNoSms="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mobileNoSms.invalid }" required minlength="10"
+                    maxlength="10" pattern="[6-9]{1}[0-9]{9}" />
                   <div *ngIf="f.submitted && mobileNoSms.invalid" class="invalid-feedback">
                     <div *ngIf="mobileNoSms.errors.required">MobileNo for SMS is required</div>
+                    <div *ngIf="mobileNoSms.errors.minlength || mobileNoSms.errors.maxlength">Mobile number must
+                      be 10
+                      digit</div>
+                    <div *ngIf="mobileNoSms.errors.pattern">Enter Valid Mobile Number</div>
                   </div>
                 </div>
 
@@ -311,9 +318,14 @@
                   <label for="mobileNoStudent">Student Mobile No.</label>
                   <input type="text" class="form-control" name="mobileNoStudent"
                     [(ngModel)]="studentModel.mobileNoStudent" #mobileNoStudent="ngModel"
-                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoStudent.invalid }" required />
+                    [ngClass]="{ 'is-invalid': f.submitted && mobileNoStudent.invalid }" required minlength="10"
+                    maxlength="10" pattern="[6-9]{1}[0-9]{9}" />
                   <div *ngIf="f.submitted && mobileNoStudent.invalid" class="invalid-feedback">
                     <div *ngIf="mobileNoStudent.errors.required">Student MobileNo is required</div>
+                    <div *ngIf="mobileNoStudent.errors.minlength || mobileNoStudent.errors.maxlength">Mobile number must
+                      be 10
+                      digit</div>
+                    <div *ngIf="mobileNoStudent.errors.pattern">Enter Valid Mobile Number</div>
                   </div>
                 </div>
 
@@ -321,7 +333,7 @@
                 <div class="form-group col-4">
                   <div class="form-group">
                     <label>Enter Email</label>
-                    <input type="text" name="emailId" class="form-control" [(ngModel)]="studentModel.emailId"
+                    <input type="email" name="emailId" class="form-control" [(ngModel)]="studentModel.emailId"
                       #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required email>
                     <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
                       <div *ngIf="email.errors.required">Email is required</div>
@@ -748,7 +760,7 @@
                 <div class="form-group">
                   <label for="idCard">ID Card</label>
                   <select type="text" class="form-control" name="idCard" [(ngModel)]="admissionDto.idCard"
-                    #idCard="ngModel" [ngClass]="{ 'is-invalid': j.submitted && idCard.invalid }" required >
+                    #idCard="ngModel" [ngClass]="{ 'is-invalid': j.submitted && idCard.invalid }" required>
                     <option value="Y">YES</option>
                     <option value="N">NO</option>
                   </select>

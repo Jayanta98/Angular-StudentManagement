@@ -8,7 +8,7 @@ export class AccountDto{
     public fatherName: string;
     public paymentMethod: string;
     public address: string;
-    public class: string;
+    public classs: string;
     public batch: string;
     public academicYear: string;
     public remarks:string;
