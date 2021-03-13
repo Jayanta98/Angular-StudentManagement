@@ -7,7 +7,6 @@
 /*
 Front css
 */
-
 *{
     margin: 00px;
     padding: 00px;
@@ -47,7 +46,7 @@ Front css
 .bottom{
     height: 70%;
     width: 100%;
-    background-color: white;
+    background-color: rgb(221, 193, 148);
     position: absolute;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -81,7 +80,7 @@ Front css
 .bottom .no3{
     font-size: 16px;
     font-weight: bold;
-    
+
 }
 
 .barcode img
@@ -117,9 +116,6 @@ Front css
 
 }
 
-/*
-Back css
-*/
 
 *{
     margin: 00px;
@@ -193,14 +189,14 @@ Back css
     height: 60px;
     width: 60px;
     padding: 15px 90px;
-    
+
 }
 
 .logo img{
     height: 100%;
     width: 100%;
     color: white ;
-    
+
 }
 .padding{
     padding-right: 20px;

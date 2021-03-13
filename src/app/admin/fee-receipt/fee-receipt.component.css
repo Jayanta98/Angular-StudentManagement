@@ -14,8 +14,10 @@
     --pageShadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
 }
 
-/* Font Include */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+th{
+  background-color: #22b8d1;
+  color:white;
+}
 
 body {
     background-color: var(--body-bg);
