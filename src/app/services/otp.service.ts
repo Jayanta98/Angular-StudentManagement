@@ -10,13 +10,16 @@ export class OtpService {
 
   constructor(private http: HttpClient) { }
 
+  
+  private base_url: string = 'http://localhost:9090';
+
   generateOtp(employeeId: number): Observable<Status>{
-    let url="http://localhost:9090/generateOtp?employeeId="+employeeId;
+    let url=this.base_url+"/generateOtp?employeeId="+employeeId;
     return this.http.get<Status>(url);
   }
 
   validateOtp(employeeId: number, otpnum: number): Observable<Status>{
-    let url="http://localhost:9090/validateOtp?employeeId="+employeeId+"&otpnum="+otpnum;
+    let url=this.base_url+"/validateOtp?employeeId="+employeeId+"&otpnum="+otpnum;
     return this.http.get<Status>(url);
   }
 }

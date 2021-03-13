@@ -9,18 +9,21 @@ import { Status } from './../models/status';
 })
 export class ExamcellService {
 
+  private base_url: string = 'http://localhost:9090';
+
+
   constructor(private http: HttpClient) { }
   upload(formData: FormData): Observable<Status>{
-    return this.http.post<any>('http://localhost:9090/results-upload',formData);
+    return this.http.post<any>(this.base_url+'/results-upload',formData);
   }
 
   fetchByRollNo(rollNo: number): Observable<ResultListDto>{
-    let url="http://localhost:9090/fetch-result-rollno?rollNo="+rollNo;
+    let url=this.base_url+"/fetch-result-rollno?rollNo="+rollNo;
     return this.http.get<ResultListDto>(url);
   }
 
   fetchByTestCode(testCode: string): Observable<ResultListDto>{
-    let url="http://localhost:9090/fetch-result-testcode?testCode="+testCode;
+    let url=this.base_url+"/fetch-result-testcode?testCode="+testCode;
     return this.http.get<ResultListDto>(url);
   }
 }

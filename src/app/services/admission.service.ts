@@ -8,28 +8,29 @@ import { Status } from '../models/status';
   providedIn: 'root'
 })
 export class AdmissionService {
+  private base_url: string = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 
   admission(admissionDto: AdmissionDto) :Observable<AdmissionStatus>{
-    return this.http.post<any>('http://localhost:9090/admission',admissionDto);
+    return this.http.post<any>(this.base_url+'/admission',admissionDto);
   }
 
   updateAdmission(admissionDto: AdmissionDto) :Observable<AdmissionStatus>{
-    return this.http.post<any>('http://localhost:9090/update-admission',admissionDto);
+    return this.http.post<any>(this.base_url+'/update-admission',admissionDto);
   }
 
   deleteAdmission(rollNo: number): Observable<Status>{
-    let url="http://localhost:9090/delete-admission?rollNo="+rollNo;
+    let url=this.base_url+"/delete-admission?rollNo="+rollNo;
     return this.http.get<Status>(url);
   }
 
   getAdmission(rollNo: number): Observable<AdmissionDtoStatus>{
-    let url="http://localhost:9090/get-admission?rollNo="+rollNo;
+    let url=this.base_url+"/get-admission?rollNo="+rollNo;
     return this.http.get<AdmissionDtoStatus>(url);
   }
   getIdCard(rollNo: number): Observable<IdDto>{
-    let url="http://localhost:9090/id-card?rollNo="+rollNo;
+    let url=this.base_url+"/id-card?rollNo="+rollNo;
     return this.http.get<IdDto>(url);
   }
 
